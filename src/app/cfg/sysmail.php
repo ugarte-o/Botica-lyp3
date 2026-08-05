@@ -1,16 +1,19 @@
 <?php
-
-$data = array(
-    "auth" => array(
-        "Host" => "smtp.example.com",
-        "SMTPAuth" => true,
-        "Username" => "noreply@example.com",
-        "From" => "noreply@example.com",
-        "Sender" => "noreply@example.com",
-        "Password" => "CAMBIA_ESTA_CONTRASENA",
-        "Port" => "587",
-        "useSMTPssl" => false,
-        "Helo" => "",
-        "FromName" => "Botica LyP",
-    ),
+$data=array(
+	"auth"=>array(
+		"Host"=>"novoingenios.com",
+		"SMTPAuth"=>true,
+		"Username"=>"noreply@novoingenios.com",
+		"From"=>"noreply@novoingenios.com",
+		"Sender"=>"noreply@novoingenios.com",
+		"Password"=>"",
+		"Port"=>"587",
+		"useSMTPssl"=>false,
+		"Helo"=>"",
+		"FromName"=>"Meralda",
+		
+	)
 );
+
+
+?>
