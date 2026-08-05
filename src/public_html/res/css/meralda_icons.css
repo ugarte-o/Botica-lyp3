@@ -1,0 +1,154 @@
+/* Base class: scalable, color-inheriting icon */
+.meralda-icon {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	vertical-align: middle;
+
+	/* Coloring via text color */
+	background-color: currentColor;
+
+	/* Masking setup */
+	-webkit-mask-size: contain;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-position: center;
+
+	mask-size: contain;
+	mask-repeat: no-repeat;
+	mask-position: center;
+
+	content: "";
+}
+.meralda-icon-color {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	vertical-align: middle;
+
+	/* Use the actual image as background (with color) */
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: transparent;
+
+	/* Optional: scale with font-size */
+	font-size: 1em;
+}
+/* Prevent SVG inside from breaking your design */
+.meralda-icon svg {
+	fill: none !important;
+	stroke: currentColor !important;
+}
+
+/* Specific icon: Save Filters */
+.meralda-icon-filter-save {
+	-webkit-mask-image: url('icons/svgrepo/filter-edit-svgrepo-com.svg');
+	mask-image: url('icons/svgrepo/filter-edit-svgrepo-com.svg');
+}
+.meralda-icon-filter-clear {
+	-webkit-mask-image: url('icons/svgrepo/filter-xmark-svgrepo-com.svg');
+	mask-image: url('icons/svgrepo/filter-xmark-svgrepo-com.svg');
+}
+.meralda-icon-cube {
+	-webkit-mask-image: url('icons/iconoir-icons/cube.svg');
+	mask-image: url('icons/iconoir-icons/cube.svg');
+}
+
+.meralda-icon-cat {
+	-webkit-mask-image: url('icons/svgrepo/cat-svgrepo-com.svg');
+	mask-image: url('icons/svgrepo/cat-svgrepo-com.svg');
+}
+.meralda-icon-cat1 {
+	-webkit-mask-image: url('icons/svgrepo/cat-animals-svgrepo-com.svg');
+	mask-image: url('icons/svgrepo/cat-animals-svgrepo-com.svg');
+}
+.meralda-icon-cat2 {
+	-webkit-mask-image: url('icons/svgrepo/grinning-cat-face-svgrepo-com.svg');
+	mask-image: url('icons/svgrepo/grinning-cat-face-svgrepo-com.svg');
+}
+.meralda-icon-color.meralda-icon-cat2 {
+	background-image: url('icons/svgrepo/grinning-cat-face-svgrepo-com.svg');
+	-webkit-mask-image:none;
+	mask-image:none;
+
+}
+.meralda-icon-cat2-color {
+	background-image: url('icons/svgrepo/grinning-cat-face-svgrepo-com.svg');
+}
+
+.meralda-icon-color.meralda-icon-pedidos {
+    display: inline-block;
+    width: 1.35em;
+    height: 1.35em;
+    min-width: 1.35em;
+    vertical-align: middle;
+
+    background-image: url('icons/svgrepo/pedidos.svg?v=30');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+
+    -webkit-mask-image: none;
+    mask-image: none;
+
+    margin-right: 6px;
+}
+
+.meralda-icon-color.meralda-icon-cobranza {
+    display: inline-block;
+    width: 1.35em;
+    height: 1.35em;
+    min-width: 1.35em;
+    vertical-align: middle;
+
+    background-image: url('icons/svgrepo/cobranza.svg?v=1');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+
+    -webkit-mask-image: none;
+    mask-image: none;
+
+    margin-right: 4px;
+}
+
+.meralda-icon-color.meralda-icon-inventario {
+    display: inline-block;
+    width: 1.35em;
+    height: 1.35em;
+    min-width: 1.35em;
+    vertical-align: middle;
+
+    background-image: url('icons/svgrepo/inventario.svg?v=1');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+
+    -webkit-mask-image: none;
+    mask-image: none;
+
+    margin-right: 6px;
+}
+
+
+.meralda-icon-color.meralda-icon-agregarproducto {
+    display: inline-block;
+    width: 1.35em;
+    height: 1.35em;
+    min-width: 1.35em;
+    vertical-align: middle;
+
+    background-image: url('icons/svgrepo/agregarproducto.svg?v=1');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+
+    -webkit-mask-image: none;
+    mask-image: none;
+
+    margin-right: 6px;
+}

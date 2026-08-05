@@ -1,0 +1,392 @@
+.container-fluid {
+    padding: 0 !important;
+}
+
+.cobranza-page {
+    min-height: 76vh;
+    padding: 25px;
+    background: #f4f7fb;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.cobranza-title {
+    margin: 0;
+    color: #172033;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.cobranza-subtitle {
+    margin: 6px 0 22px;
+    color: #687386;
+    font-size: 14px;
+}
+
+.mensaje-ok,
+.mensaje-error {
+    margin-bottom: 18px;
+    padding: 13px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.mensaje-ok {
+    color: #0f5132;
+    background: #d1e7dd;
+    border: 1px solid #badbcc;
+}
+
+.mensaje-error {
+    color: #842029;
+    background: #f8d7da;
+    border: 1px solid #f5c2c7;
+}
+
+.cobranza-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 370px;
+    gap: 20px;
+    align-items: start;
+}
+
+.panel-cobranza {
+    background: #ffffff;
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.panel-cobranza + .panel-cobranza {
+    margin-top: 20px;
+}
+
+.panel-cobranza-header {
+    padding: 17px 20px;
+    border-bottom: 1px solid #e1e7ef;
+}
+
+.panel-cobranza-title {
+    margin: 0;
+    color: #273044;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.panel-cobranza-body {
+    padding: 20px;
+}
+
+.busqueda {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.cobranza-form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccd3dd;
+    border-radius: 7px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 14px;
+}
+
+.cobranza-form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.12);
+}
+
+.tabla-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-cobranza {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+}
+
+.tabla-cobranza th {
+    padding: 12px;
+    color: #374151;
+    background: #f3f4f6;
+    border-bottom: 2px solid #d1d5db;
+    text-align: left;
+    font-size: 13px;
+}
+
+.tabla-cobranza td {
+    padding: 12px;
+    color: #4b5563;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 13px;
+}
+
+.estado-pendiente {
+    display: inline-block;
+    padding: 5px 9px;
+    color: #92400e;
+    background: #fef3c7;
+    border-radius: 18px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.btn-seleccionar {
+    padding: 7px 11px;
+    color: #ffffff;
+    background: #795548;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tabla-vacia {
+    padding: 28px !important;
+    color: #7b8495 !important;
+    text-align: center;
+}
+
+.total-detalle {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding: 14px;
+    color: #166534;
+    background: #f0fdf4;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.pago-fila {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 13px;
+    color: #4b5563;
+}
+
+.pago-total {
+    color: #166534;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.cobranza-form-label {
+    display: block;
+    margin: 15px 0 7px;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.vuelto {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 13px;
+    padding: 12px;
+    color: #166534;
+    background: #dcfce7;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.metodos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.metodo {
+    padding: 10px 5px;
+    border: 1px solid #ccd3dd;
+    border-radius: 7px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.acciones-cobranza {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.btn-cancelar,
+.btn-confirmar {
+    padding: 11px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn-cancelar {
+    color: #b42318;
+    background: #ffffff;
+    border: 1px solid #dc3545;
+}
+
+.btn-confirmar {
+    color: #ffffff;
+    background: #198754;
+    border: none;
+}
+
+.btn-cancelar:disabled,
+.btn-confirmar:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+
+
+
+
+
+
+
+
+.ticket-preview,
+.ticket-modal {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.ticket-header {
+    text-align: center;
+}
+
+.ticket-header h2,
+.ticket-header h3 {
+    margin: 0;
+}
+
+.ticket-line {
+    margin: 14px 0;
+    border-top: 1px dashed #777777;
+}
+
+.ticket-row,
+.ticket-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 8px 0;
+}
+
+.ticket-total {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.ticket-item {
+    margin: 11px 0;
+}
+
+.ticket-gracias {
+    text-align: center;
+}
+
+.ticket-overlay {
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.ticket-modal {
+    width: 100%;
+    max-width: 390px;
+    max-height: 90vh;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30);
+    overflow-y: auto;
+}
+
+.ticket-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.btn-imprimir,
+.btn-cerrar-ticket {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn-imprimir {
+    color: #ffffff;
+    background: #2563eb;
+}
+
+.btn-cerrar-ticket {
+    color: #172033;
+    background: #e5e7eb;
+}
+
+@media (max-width: 1050px) {
+    .cobranza-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .cobranza-page {
+        padding: 16px 10px;
+    }
+
+    .busqueda {
+        flex-direction: column;
+    }
+
+    .metodos {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden !important;
+    }
+
+    #ticketCobranza,
+    #ticketCobranza * {
+        visibility: visible !important;
+    }
+
+    #ticketCobranza {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 320px;
+        max-width: none;
+        max-height: none;
+        padding: 12px;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .ticket-actions {
+        display: none !important;
+    }
+}

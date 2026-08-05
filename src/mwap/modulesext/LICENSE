@@ -1,0 +1,7 @@
+# License for meralda-thirdparty-modules
+
+This directory contains third-party modules and libraries for Meralda, managed as a Git submodule.
+
+All code and libraries in this directory retain their original licenses. See each module's own LICENSE file for details.
+
+This repository does not relicense or modify the terms of any included third-party code.

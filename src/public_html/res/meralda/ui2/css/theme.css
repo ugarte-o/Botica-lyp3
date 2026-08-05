@@ -1,0 +1,1109 @@
+/**
+ * UI2 Theme
+ * 
+ * Modern theme customizations and overrides.
+ * This file is loaded last and can override any previous styles.
+ */
+
+/* =========================================================================
+ * GLOBAL BASE STYLES
+ * ========================================================================= */
+body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+/* =========================================================================
+ * SINGLE MODE LAYOUT - Generic wrapper for full-screen UIs
+ * ========================================================================= */
+.layout-single-mode {
+    display: block;
+}
+
+.layout-single-mode-content {
+    display: block;
+}
+
+/* =========================================================================
+ * CARDS
+ * Clean, minimal card design
+ * ========================================================================= */
+.card {
+    background-color: var(--ui2-card-bg);
+    border: 1px solid var(--ui2-gray-200);
+    border-radius: var(--ui2-border-radius-lg);
+    box-shadow: none;
+    transition: all var(--ui2-transition-base);
+}
+
+.card:hover {
+    border-color: var(--ui2-gray-300);
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--ui2-gray-100);
+    padding: var(--ui2-spacing-md) var(--ui2-spacing-lg);
+    font-weight: var(--ui2-font-weight-semibold);
+    font-size: var(--ui2-font-size-sm);
+    color: var(--ui2-gray-700);
+}
+
+.card-body {
+    padding: var(--ui2-spacing-lg);
+}
+
+.card-title {
+    margin-bottom: var(--ui2-spacing-sm);
+    font-weight: var(--ui2-font-weight-semibold);
+    font-size: var(--ui2-font-size-base);
+    color: var(--ui2-gray-900);
+}
+
+.card-footer {
+    background-color: var(--ui2-gray-50);
+    border-top: 1px solid var(--ui2-gray-100);
+    padding: var(--ui2-spacing-md) var(--ui2-spacing-lg);
+}
+
+/* =========================================================================
+ * LOGIN & AUTHENTICATION
+ * Modern glassmorphism authentication pages with backdrop blur
+ * Applies to all authentication layouts: login, password reset, register
+ * Migrated from theme (Login Migration)
+ * ========================================================================= */
+
+/* Authentication layout - dark gradient background */
+#layoutAuthentication {
+    background: linear-gradient(135deg, var(--ui2-auth-bg-start) 0%, var(--ui2-auth-bg-end) 100%);
+    font-family: var(--ui2-font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#layoutAuthentication #layoutAuthentication_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* Wrapper for forms without grid system */
+#layoutAuthentication .auth-form-wrapper {
+    max-width: 540px;
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    #layoutAuthentication .auth-form-wrapper {
+        min-width: 420px;
+    }
+}
+
+/* Glassmorphism card for all auth pages */
+#layoutAuthentication .card {
+    background: var(--ui2-auth-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--ui2-auth-glass-border);
+    border-radius: var(--ui2-border-radius-xl);
+    box-shadow: var(--ui2-auth-glass-shadow);
+    overflow: hidden;
+}
+
+#layoutAuthentication .card-header {
+    background: var(--ui2-auth-card-header-bg);
+    border-bottom: 1px solid var(--ui2-auth-card-header-border);
+    padding: 1.5rem;
+}
+
+#layoutAuthentication .card-header .card-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--ui2-auth-text);
+    text-align: center;
+    font-family: var(--ui2-font-family);
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+#layoutAuthentication .card-body {
+    padding: 2rem 1.5rem;
+    background: transparent;
+}
+
+/* Form controls with semi-transparent backgrounds */
+#layoutAuthentication .form-control {
+    background: var(--ui2-auth-input-bg) !important;
+    border: 1px solid var(--ui2-auth-input-border);
+    color: var(--ui2-auth-text);
+    font-family: var(--ui2-font-family);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+}
+
+#layoutAuthentication .form-control:hover {
+    border-color: var(--ui2-auth-input-hover-border);
+    background: var(--ui2-auth-input-hover-bg) !important;
+}
+
+#layoutAuthentication .form-control:focus {
+    border-color: var(--ui2-auth-input-focus-border);
+    background: var(--ui2-auth-input-focus-bg) !important;
+    box-shadow: 0 0 0 3px var(--ui2-auth-input-focus-shadow);
+}
+
+/* Autofill styles - prevent white background override */
+#layoutAuthentication .form-control:-webkit-autofill,
+#layoutAuthentication .form-control:-webkit-autofill:hover,
+#layoutAuthentication .form-control:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--ui2-auth-text);
+    -webkit-box-shadow: 0 0 0 1000px var(--ui2-auth-input-focus-bg) inset;
+    box-shadow: 0 0 0 3px var(--ui2-auth-input-focus-shadow);
+    border-color: var(--ui2-auth-input-focus-border);
+    transition: background-color 5000s ease-in-out 0s;
+    font-family: var(--ui2-font-family);
+}
+
+#layoutAuthentication .form-control::placeholder {
+    color: var(--ui2-auth-placeholder);
+    opacity: 1;
+    font-family: var(--ui2-font-family);
+    font-weight: 400;
+}
+
+/* Floating labels */
+#layoutAuthentication .form-floating > label {
+    color: var(--ui2-auth-label);
+    font-family: var(--ui2-font-family);
+    font-weight: 400;
+    font-size: 0.9375rem;
+}
+
+#layoutAuthentication .form-floating > .form-control:focus ~ label,
+#layoutAuthentication .form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--ui2-auth-label-active);
+    font-weight: 500;
+}
+
+/* Form labels (non-floating) */
+#layoutAuthentication .form-label {
+    color: var(--ui2-auth-label-active);
+    font-family: var(--ui2-font-family);
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Input groups (for captcha, etc) */
+#layoutAuthentication .input-group-text {
+    background: var(--ui2-auth-captcha-bg);
+    border: 1px solid var(--ui2-auth-input-border);
+    color: var(--ui2-auth-input-group-text);
+    transition: all 0.2s ease;
+}
+
+#layoutAuthentication .input-group:focus-within .input-group-text {
+    border-color: var(--ui2-auth-input-focus-border);
+    box-shadow: 0 0 0 3px var(--ui2-auth-input-focus-shadow);
+}
+
+/* Primary button - white on dark */
+#layoutAuthentication .btn-primary {
+    background: var(--ui2-auth-btn-bg);
+    border: none;
+    color: var(--ui2-auth-btn-text);
+    font-family: var(--ui2-font-family);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+    padding: 0.75rem 1rem;
+}
+
+#layoutAuthentication .btn-primary:hover {
+    background: var(--ui2-auth-btn-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px -4px var(--ui2-auth-btn-hover-shadow);
+    color: var(--ui2-auth-btn-text);
+}
+
+/* Success button variant */
+#layoutAuthentication .btn-success {
+    background: var(--ui2-auth-btn-bg);
+    border: none;
+    color: var(--ui2-auth-btn-text);
+    font-family: var(--ui2-font-family);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+}
+
+#layoutAuthentication .btn-success:hover {
+    background: var(--ui2-auth-btn-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px -4px var(--ui2-auth-btn-hover-shadow);
+    color: var(--ui2-auth-btn-text);
+}
+
+/* Links styling */
+#layoutAuthentication a:not(.btn) {
+    color: var(--ui2-auth-link);
+    text-decoration: none;
+    font-family: var(--ui2-font-family);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+#layoutAuthentication a:not(.btn):hover {
+    color: var(--ui2-auth-link-hover);
+}
+
+/* Alert messages */
+#layoutAuthentication .alert {
+    background: var(--ui2-auth-alert-bg);
+    border: 1px solid var(--ui2-auth-alert-border);
+    color: var(--ui2-auth-text);
+    font-family: var(--ui2-font-family);
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+}
+
+#layoutAuthentication .alert-danger {
+    background: var(--ui2-auth-alert-danger-bg);
+    border: 1px solid var(--ui2-auth-alert-danger-border);
+    border-left: 4px solid var(--ui2-danger);
+    color: var(--ui2-auth-alert-danger-text);
+}
+
+#layoutAuthentication .alert-success {
+    background: var(--ui2-auth-alert-success-bg);
+    border: 1px solid var(--ui2-auth-alert-success-border);
+    border-left: 4px solid var(--ui2-success);
+    color: var(--ui2-auth-alert-success-text);
+}
+
+#layoutAuthentication .alert-info {
+    background: var(--ui2-auth-alert-info-bg);
+    border: 1px solid var(--ui2-auth-alert-info-border);
+    border-left: 4px solid var(--ui2-info);
+    color: var(--ui2-auth-alert-info-text);
+}
+
+/* Loading/waiting text */
+#layoutAuthentication .text-muted {
+    color: var(--ui2-auth-text-muted) !important;
+    font-family: var(--ui2-font-family);
+    font-size: 0.875rem;
+}
+
+/* Backward compatibility - specific container support */
+#uie_login-container {
+    background: transparent;
+    min-height: auto;
+    display: block;
+    padding: 0;
+}
+
+#uie_login-wait {
+    color: var(--ui2-auth-text-muted);
+    font-family: var(--ui2-font-family);
+    font-size: 0.875rem;
+}
+
+#uie_login-message {
+    margin-top: 0.75rem;
+}
+
+/* Legacy card styling (kept for compatibility) */
+.login-card,
+.card.shadow-lg {
+    box-shadow: var(--ui2-shadow-lg) !important;
+    border: none;
+}
+
+/* =========================================================================
+ * BUTTONS
+ * Modern button styling with smooth transitions
+ * ========================================================================= */
+.btn {
+    font-family: var(--ui2-font-family);
+    font-weight: var(--ui2-font-weight-medium);
+    font-size: var(--ui2-font-size-sm);
+    border-radius: var(--ui2-border-radius);
+    padding: 0.5rem 1rem;
+    transition: all var(--ui2-transition-fast);
+    border: none;
+}
+
+.btn:focus,
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--ui2-ring-color);
+}
+
+.btn-primary,
+.btn-primary:visited,
+.btn-primary:link {
+    background-color: var(--ui2-primary);
+    color: var(--ui2-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--ui2-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--ui2-shadow-sm);
+}
+
+.btn-primary:active {
+    background-color: var(--ui2-primary-active);
+    transform: translateY(0);
+}
+
+.btn-success,
+.btn-success:visited,
+.btn-success:link {
+    background-color: var(--ui2-success);
+    color: var(--ui2-white);
+}
+
+.btn-success:hover {
+    background-color: var(--ui2-success-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--ui2-shadow-sm);
+}
+
+.btn-danger,
+.btn-danger:visited,
+.btn-danger:link {
+    background-color: var(--ui2-danger);
+    color: var(--ui2-white);
+}
+
+.btn-danger:hover {
+    background-color: var(--ui2-danger-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--ui2-shadow-sm);
+}
+
+.btn-secondary,
+.btn-secondary:visited,
+.btn-secondary:link {
+    background-color: var(--ui2-gray-100);
+    color: var(--ui2-gray-700);
+    border: 1px solid var(--ui2-gray-300);
+}
+
+.btn-secondary:hover {
+    background-color: var(--ui2-gray-200);
+    color: var(--ui2-gray-900);
+}
+
+.btn-outline-primary,
+.btn-outline-primary:visited,
+.btn-outline-primary:link {
+    background-color: transparent;
+    color: var(--ui2-primary);
+    border: 1px solid var(--ui2-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--ui2-primary);
+    color: var(--ui2-white);
+}
+
+/* Large button */
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: var(--ui2-font-size-base);
+    border-radius: var(--ui2-border-radius-lg);
+}
+
+/* Small button */
+.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: var(--ui2-font-size-xs);
+}
+
+/* =========================================================================
+ * FORM CONTROLS
+ * Modern input styling
+ * ========================================================================= */
+.form-control {
+    font-family: var(--ui2-font-family);
+    font-size: var(--ui2-font-size-sm);
+    border-radius: var(--ui2-border-radius);
+    border: 1px solid var(--ui2-gray-300);
+    padding: 0.625rem 0.875rem;
+    transition: all var(--ui2-transition-fast);
+    background-color: var(--ui2-white);
+}
+
+.form-control:hover {
+    border-color: var(--ui2-gray-400);
+}
+
+.form-control:focus {
+    border-color: var(--ui2-primary);
+    box-shadow: 0 0 0 3px var(--ui2-ring-color);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--ui2-gray-400);
+}
+
+/* Floating labels */
+.form-floating > .form-control {
+    padding: 1rem 0.875rem;
+    height: calc(3.5rem + 2px);
+}
+
+.form-floating > label {
+    padding: 1rem 0.875rem;
+    color: var(--ui2-gray-500);
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--ui2-primary);
+    transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+
+/* Form labels */
+.form-label {
+    font-size: var(--ui2-font-size-sm);
+    font-weight: var(--ui2-font-weight-medium);
+    color: var(--ui2-gray-700);
+    margin-bottom: var(--ui2-spacing-xs);
+}
+
+/* Invalid state */
+.form-control.is-invalid {
+    border-color: var(--ui2-danger);
+}
+
+.form-control.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(var(--ui2-danger-rgb), 0.25);
+}
+
+.invalid-feedback {
+    font-size: var(--ui2-font-size-xs);
+    color: var(--ui2-danger);
+}
+
+/* =========================================================================
+ * ALERTS
+ * Modern alert styling
+ * ========================================================================= */
+.alert {
+    border-radius: var(--ui2-border-radius);
+    border: none;
+    padding: var(--ui2-spacing-md);
+    font-size: var(--ui2-font-size-sm);
+}
+
+.alert-danger {
+    background-color: var(--ui2-danger-bg);
+    color: var(--ui2-danger-text-alt);
+    border-left: 4px solid var(--ui2-danger);
+}
+
+.alert-success {
+    background-color: var(--ui2-success-bg-alt);
+    color: var(--ui2-success-text-alt);
+    border-left: 4px solid var(--ui2-success);
+}
+
+.alert-warning {
+    background-color: var(--ui2-warning-bg);
+    color: var(--ui2-warning-text-alt);
+    border-left: 4px solid var(--ui2-warning);
+}
+
+.alert-info {
+    background-color: var(--ui2-info-bg-alt);
+    color: var(--ui2-info-text-alt);
+    border-left: 4px solid var(--ui2-info);
+}
+
+/* =========================================================================
+ * DROPDOWNS
+ * Modern dropdown styling
+ * ========================================================================= */
+.dropdown-menu {
+    border: 1px solid var(--ui2-gray-200);
+    border-radius: var(--ui2-border-radius-lg);
+    box-shadow: var(--ui2-shadow-lg);
+    padding: var(--ui2-spacing-sm);
+}
+
+.dropdown-item,
+.dropdown-item:visited,
+.dropdown-item:link {
+    padding: 0.5rem 0.875rem;
+    font-size: var(--ui2-font-size-sm);
+    border-radius: var(--ui2-border-radius-sm);
+    color: var(--ui2-gray-700);
+    transition: all var(--ui2-transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: var(--ui2-gray-100);
+    color: var(--ui2-gray-900);
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--ui2-primary-light);
+    color: var(--ui2-primary);
+}
+
+.dropdown-divider {
+    margin: var(--ui2-spacing-sm) 0;
+    border-color: var(--ui2-gray-200);
+}
+
+/* =========================================================================
+ * TOPBAR DROPDOWNS
+ * ========================================================================= */
+.sb-topnav .dropdown-menu {
+    margin-top: var(--ui2-spacing-sm);
+}
+
+.sb-topnav .nav-link,
+.sb-topnav .nav-link:visited,
+.sb-topnav .nav-link:link {
+    color: var(--ui2-topbar-color);
+    padding: var(--ui2-spacing-sm) var(--ui2-spacing-md);
+    border-radius: var(--ui2-border-radius);
+    transition: all var(--ui2-transition-fast);
+}
+
+.sb-topnav .nav-link:hover {
+    color: var(--ui2-topbar-color-hover);
+    background-color: var(--ui2-topbar-hover-bg);
+}
+
+/* =========================================================================
+ * TABLES
+ * Modern table styling
+ * ========================================================================= */
+.table {
+    font-size: var(--ui2-font-size-sm);
+}
+
+.table > thead {
+    background-color: var(--ui2-gray-50);
+}
+
+.table > thead th {
+    font-weight: var(--ui2-font-weight-semibold);
+    font-size: var(--ui2-font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ui2-gray-600);
+    padding: var(--ui2-spacing-md);
+    border-bottom: 2px solid var(--ui2-gray-200);
+}
+
+.table > tbody td {
+    padding: var(--ui2-spacing-md);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--ui2-gray-100);
+}
+
+.table > tbody tr:hover {
+    background-color: var(--ui2-gray-50);
+}
+
+/* =========================================================================
+ * BADGES
+ * Modern badge styling
+ * ========================================================================= */
+.badge {
+    font-weight: var(--ui2-font-weight-medium);
+    padding: 0.25em 0.6em;
+    border-radius: var(--ui2-border-radius-full);
+    font-size: 0.75em;
+}
+
+/* =========================================================================
+ * LINKS
+ * No visited color change - keep consistent appearance
+ * ========================================================================= */
+a,
+a:visited,
+a:link {
+    color: var(--ui2-primary);
+    text-decoration: none;
+    transition: all var(--ui2-transition-fast);
+}
+
+a:hover {
+    color: var(--ui2-primary-hover);
+}
+
+/* Content links - more styled appearance */
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.page-link),
+.mw_ui_inner_space a:not(.btn):not(.nav-link):not(.dropdown-item),
+.card-body a:not(.btn):not(.nav-link):not(.dropdown-item) {
+    color: var(--ui2-primary);
+    font-weight: var(--ui2-font-weight-medium);
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--ui2-primary-rgb), 0.3);
+    text-underline-offset: 2px;
+    transition: all var(--ui2-transition-fast);
+}
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.page-link):visited,
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.page-link):link,
+.mw_ui_inner_space a:not(.btn):not(.nav-link):not(.dropdown-item):visited,
+.mw_ui_inner_space a:not(.btn):not(.nav-link):not(.dropdown-item):link,
+.card-body a:not(.btn):not(.nav-link):not(.dropdown-item):visited,
+.card-body a:not(.btn):not(.nav-link):not(.dropdown-item):link {
+    color: var(--ui2-primary);
+    text-decoration-color: rgba(var(--ui2-primary-rgb), 0.3);
+}
+
+main a:not(.btn):not(.nav-link):not(.dropdown-item):not(.page-link):hover,
+.mw_ui_inner_space a:not(.btn):not(.nav-link):not(.dropdown-item):hover,
+.card-body a:not(.btn):not(.nav-link):not(.dropdown-item):hover {
+    color: var(--ui2-primary-hover);
+    text-decoration-color: var(--ui2-primary-hover);
+}
+
+/* =========================================================================
+ * FOOTER
+ * ========================================================================= */
+footer.py-4 {
+    background-color: transparent !important;
+    border: none;
+}
+
+footer .text-muted {
+    color: var(--ui2-gray-400) !important;
+    font-size: var(--ui2-font-size-xs);
+}
+
+/* =========================================================================
+ * PROGRESS BARS
+ * ========================================================================= */
+.progress {
+    height: 0.5rem;
+    border-radius: var(--ui2-border-radius-full);
+    background-color: var(--ui2-gray-200);
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+/* =========================================================================
+ * MODAL
+ * ========================================================================= */
+.modal-content {
+    border: none;
+    border-radius: var(--ui2-border-radius-xl);
+    box-shadow: var(--ui2-shadow-xl);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--ui2-gray-200);
+    padding: var(--ui2-spacing-lg);
+}
+
+.modal-body {
+    padding: var(--ui2-spacing-lg);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--ui2-gray-200);
+    padding: var(--ui2-spacing-md) var(--ui2-spacing-lg);
+}
+
+/* =========================================================================
+ * UTILITY CLASSES
+ * ========================================================================= */
+.rounded-lg {
+    border-radius: var(--ui2-border-radius-lg) !important;
+}
+
+.shadow-lg {
+    box-shadow: var(--ui2-shadow-lg) !important;
+}
+
+/* =========================================================================
+ * ANIMATIONS
+ * ========================================================================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn var(--ui2-transition-slow) ease-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* =========================================================================
+ * ACCESSIBILITY
+ * ========================================================================= */
+:focus-visible {
+    outline: 2px solid var(--ui2-primary);
+    outline-offset: 2px;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--ui2-primary);
+    color: var(--ui2-white);
+    padding: var(--ui2-spacing-sm) var(--ui2-spacing-md);
+    border-radius: 0 0 var(--ui2-border-radius) 0;
+    z-index: var(--ui2-z-tooltip);
+    transition: top var(--ui2-transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* =========================================================================
+ * RESPONSIVE
+ * ========================================================================= */
+@media (max-width: 576px) {
+    .card-body {
+        padding: var(--ui2-spacing-md);
+    }
+    
+    .btn-lg {
+        padding: 0.625rem 1.25rem;
+        font-size: var(--ui2-font-size-sm);
+    }
+}
+
+/* =========================================================================
+ * PRINT STYLES
+ * ========================================================================= */
+@media print {
+    .sb-topnav,
+    #layoutSidenav_nav,
+    .no-print {
+        display: none !important;
+    }
+    
+    #layoutSidenav #layoutSidenav_content {
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* =========================================================================
+ * PAGE HEADER
+ * Modern page title and breadcrumb area
+ * ========================================================================= */
+h1.mt-4,
+.page-header h1 {
+    font-size: 1.75rem;
+    font-weight: var(--ui2-font-weight-bold);
+}
+
+/* =========================================================================
+ * SIDEBAR - Navigation Enhancements
+ * Active indicator and animations
+ * ========================================================================= */
+
+/* White indicator bar on the left side of the link */
+.sb-sidenav-dark .sb-sidenav-menu .nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.25rem;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+    background: transparent;
+    transition: background 0.2s;
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover::before {
+    background: var(--ui2-sidebar-indicator-hover);
+}
+
+.sb-sidenav-dark .sb-sidenav-menu .nav-item.active > .nav-link::before,
+.sb-sidenav-dark .sb-sidenav-menu .nav-link.active::before {
+    background: var(--ui2-sidebar-indicator-active);
+}
+
+/* Logout link styling */
+.sb-sidenav-menu a[href*="logout"] {
+    color: var(--ui2-sidebar-logout-color);
+}
+
+.sb-sidenav-menu a[href*="logout"]:hover {
+    color: var(--ui2-sidebar-logout-hover-color);
+    background-color: var(--ui2-sidebar-logout-hover-bg);
+}
+
+/* Sidebar stagger animation */
+.sb-sidenav-menu .nav > a.nav-link:nth-child(1) { animation: fadeIn 0.3s .05s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(2) { animation: fadeIn 0.3s .10s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(3) { animation: fadeIn 0.3s .15s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(4) { animation: fadeIn 0.3s .20s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(5) { animation: fadeIn 0.3s .25s ease both; }
+.sb-sidenav-menu .nav > a.nav-link:nth-child(6) { animation: fadeIn 0.3s .30s ease both; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark sidebar scrollbar */
+.sb-sidenav-menu::-webkit-scrollbar-thumb {
+    background: var(--ui2-sidebar-scrollbar);
+}
+
+.sb-sidenav-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--ui2-sidebar-scrollbar-hover);
+}
+
+.sb-sidenav-menu {
+    scrollbar-color: var(--ui2-sidebar-scrollbar) transparent;
+}
+
+/* =========================================================================
+ * MAIN FOOTER - Page footer branding
+ * ========================================================================= */
+
+footer.py-4 {
+    border-top: 1px solid var(--ui2-border-color);
+    background: var(--ui2-body-bg) !important;
+}
+
+footer .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+footer .footer-brand a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 1;
+}
+
+footer .footer-logo {
+    height: 32px;
+    width: auto;
+    opacity: 0.6;
+    transition: opacity var(--ui2-transition-fast);
+}
+
+footer .footer-brand a:hover .footer-logo {
+    opacity: 0.85;
+}
+
+/* =========================================================================
+ * PAGE HEADER - Breadcrumb Inline
+ * Modern inline breadcrumb navigation
+ * ========================================================================= */
+
+.mw-subinterface-header {
+    display: block;
+    padding: 1rem 0 0.75rem;
+    margin: 0;
+    line-height: 1.5;
+    border-bottom: none;
+}
+
+.mw-subinterface-header-route {
+    display: inline;
+    font-size: var(--ui2-font-size-sm);
+    font-weight: 500;
+    color: var(--ui2-gray-400);
+    padding: 0;
+}
+
+.mw-subinterface-header-route::after {
+    content: " › ";
+    color: var(--ui2-gray-300);
+    white-space: pre;
+}
+
+.mw-subinterface-header-route a {
+    color: var(--ui2-gray-400);
+    text-decoration: none;
+}
+
+.mw-subinterface-header-route a:hover {
+    color: var(--ui2-gray-600);
+}
+
+.mw-subinterface-header-titles {
+    display: inline;
+}
+
+.mw-subinterface-header-title {
+    display: inline;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--ui2-gray-900);
+    letter-spacing: -0.02em;
+}
+
+hr.mw-subinterface-header-divider {
+    border-color: var(--ui2-border-color);
+    margin: 0.375rem 0 1rem;
+    opacity: 1;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: var(--ui2-font-weight-semibold);
+    color: var(--ui2-gray-800);
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: 1.125rem;
+    font-weight: var(--ui2-font-weight-semibold);
+    color: var(--ui2-gray-800);
+}
+
+h4, h5, h6 {
+    font-weight: var(--ui2-font-weight-semibold);
+    color: var(--ui2-gray-700);
+}
+
+/* =========================================================================
+ * BREADCRUMBS
+ * Clean, modern breadcrumb navigation
+ * ========================================================================= */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: var(--ui2-spacing-lg);
+    font-size: var(--ui2-font-size-sm);
+}
+
+.breadcrumb-item {
+    color: var(--ui2-gray-500);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--ui2-gray-300);
+    content: "/";
+    padding: 0 0.5rem;
+}
+
+.breadcrumb-item a,
+.breadcrumb-item a:visited,
+.breadcrumb-item a:link {
+    color: var(--ui2-gray-500);
+    text-decoration: none;
+    transition: color var(--ui2-transition-fast);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--ui2-primary);
+}
+
+.breadcrumb-item.active {
+    color: var(--ui2-gray-700);
+}
+
+/* =========================================================================
+ * CUSTOM SCROLLBAR
+ * Modern thin scrollbar for webkit browsers
+ * ========================================================================= */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ui2-gray-300);
+    border-radius: var(--ui2-border-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ui2-gray-400);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--ui2-gray-300) transparent;
+}
+
+/* =========================================================================
+ * MAIN CONTENT AREA
+ * Smooth transitions and modern spacing
+ * ========================================================================= */
+main.container-fluid {
+    padding: var(--ui2-spacing-lg) var(--ui2-spacing-xl);
+}
+
+/* =========================================================================
+ * SELECTION
+ * Brand-colored text selection
+ * ========================================================================= */
+::selection {
+    background-color: var(--ui2-primary-light);
+    color: var(--ui2-primary);
+}
+
+/* =========================================================================
+ * NAV TITLE (Legacy support)
+ * ========================================================================= */
+.nav_main_ui_title {
+    font-size: var(--ui2-font-size-lg);
+    font-weight: var(--ui2-font-weight-semibold);
+    color: var(--ui2-gray-700);
+}
+
+/* =========================================================================
+ * COLLAPSE BUTTON
+ * ========================================================================= */
+.mw_collaps_btn {
+    color: var(--ui2-gray-600) !important;
+    background: transparent;
+    border: none;
+    border-radius: var(--ui2-border-radius);
+    transition: all var(--ui2-transition-fast);
+}
+
+.mw_collaps_btn:hover {
+    background-color: var(--ui2-gray-100);
+    color: var(--ui2-gray-900) !important;
+}

@@ -1,0 +1,485 @@
+/**
+ * UI2 Components
+ * 
+ * Reusable UI components: cards, forms, buttons, headers, tables, etc.
+ * Uses CSS variables for consistent theming.
+ */
+
+/* =========================================================================
+ * SUBINTERFACE HEADER
+ * Page title and breadcrumb area
+ * ========================================================================= */
+.mw-subinterface-header {
+    padding-bottom: var(--ui2-spacing-xs);
+    margin-top: var(--ui2-spacing-md);
+    margin-bottom: var(--ui2-spacing-xs);
+    border-bottom: 1px solid var(--ui2-border-color-light);
+    font-size: var(--ui2-font-size-lg);
+    font-weight: var(--ui2-font-weight-medium);
+}
+
+.mw-subinterface-header-title {
+    font-size: var(--ui2-font-size-xl);
+    display: inline-block;
+}
+
+.mw-subinterface-header-titles {
+    /* Container for title + subtitle */
+}
+
+.mw-subinterface-header-subtitle {
+    font-size: var(--ui2-font-size-xs);
+    display: inline-block;
+    color: var(--ui2-gray-600);
+}
+
+.mw-subinterface-header-route {
+    padding: var(--ui2-spacing-xs) 0;
+    font-size: var(--ui2-font-size-sm);
+    font-weight: var(--ui2-font-weight-normal);
+}
+
+.mw-subinterface-header-route a {
+    text-decoration: none !important;
+    color: var(--ui2-gray-700) !important;
+    transition: color var(--ui2-transition-fast);
+}
+
+.mw-subinterface-header-route a:hover {
+    color: var(--ui2-primary) !important;
+}
+
+/* =========================================================================
+ * SUBINTERFACE BUTTONS CONTAINER
+ * Action buttons area
+ * ========================================================================= */
+.mw-subinterface-btns-container {
+    text-align: right;
+    margin-top: var(--ui2-spacing-sm);
+    margin: auto;
+}
+
+.mw-subinterface-btns-container .btn {
+    margin-bottom: 0;
+    margin-left: var(--ui2-spacing-sm);
+}
+
+.mw-subinterface-btns-container .btn-group {
+    margin-bottom: 0;
+    margin-left: var(--ui2-spacing-sm);
+}
+
+/* =========================================================================
+ * CURRENT UI NAVBAR
+ * Sub-navigation horizontal bar with tabs and underline style
+ * Migrated from theme to UI2 base (FASE 2)
+ * ========================================================================= */
+.currentUINavBar {
+    background: var(--ui2-white);
+    border: none;
+    border-bottom: 1px solid var(--ui2-border-color);
+    border-radius: 0;
+    padding: 0 0.5rem;
+    margin: 0 0 var(--ui2-spacing-lg) 0;
+}
+
+.currentUINavBar.bg-light {
+    background: var(--ui2-white);
+}
+
+.currentUINavBar .navbar-nav {
+    gap: 0;
+}
+
+.currentUINavBar .nav-item {
+    margin: 0;
+}
+
+.currentUINavBar .nav-link {
+    font-size: var(--ui2-font-size-sm);
+    font-weight: 500;
+    color: var(--ui2-gray-500);
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: 0.625rem 0.875rem;
+    background: transparent;
+    margin-bottom: -1px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all var(--ui2-transition-fast);
+}
+
+.currentUINavBar .nav-link:hover {
+    color: var(--ui2-gray-700);
+    border-bottom-color: var(--ui2-gray-300);
+}
+
+.currentUINavBar .nav-item.active > .nav-link,
+.currentUINavBar .nav-link.active {
+    color: var(--ui2-gray-900);
+    font-weight: 600;
+    border-bottom-color: var(--ui2-gray-800);
+}
+
+.currentUINavBar .dropdown-item {
+    font-size: var(--ui2-font-size-xs);
+}
+
+.currentUINavBar .dropdown-toggle::after {
+    margin-left: var(--ui2-spacing-xs);
+    opacity: 0.45;
+}
+
+/* Integration with cards - seamless tabs */
+.currentUINavBar + .card,
+.currentUINavBar + div > .card:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+}
+
+/* =========================================================================
+ * FORM STYLING
+ * Form groups, labels, inputs
+ * ========================================================================= */
+.form-group {
+    margin-bottom: var(--ui2-spacing-sm);
+    margin-top: var(--ui2-spacing-sm);
+}
+
+.form-group label {
+    font-size: var(--ui2-font-size-xs);
+    font-weight: var(--ui2-font-weight-medium);
+    color: var(--ui2-gray-700);
+}
+
+.mwfrmgr {
+    margin-bottom: var(--ui2-spacing-sm);
+    margin-top: var(--ui2-spacing-sm);
+}
+
+/* Form controls matching Bootstrap style */
+.form-control,
+.datatable-input {
+    border-radius: var(--ui2-border-radius);
+    border-color: var(--ui2-border-color);
+    transition: border-color var(--ui2-transition-fast), box-shadow var(--ui2-transition-fast);
+}
+
+.form-control:focus,
+.datatable-input:focus {
+    border-color: var(--ui2-primary);
+    box-shadow: 0 0 0 0.25rem rgba(var(--ui2-primary-rgb), 0.25);
+}
+
+/* Floating label adjustment */
+.form-floating > label {
+    color: var(--ui2-gray-600);
+}
+
+/* =========================================================================
+ * CARDS
+ * Card component enhancements
+ * ========================================================================= */
+.card {
+    border-radius: var(--ui2-border-radius-lg);
+    border-color: var(--ui2-border-color-light);
+    box-shadow: var(--ui2-shadow-sm);
+}
+
+.card-header {
+    background-color: var(--ui2-gray-100);
+    border-bottom-color: var(--ui2-border-color-light);
+    font-weight: var(--ui2-font-weight-semibold);
+}
+
+.card-title {
+    margin-bottom: 0;
+    font-weight: var(--ui2-font-weight-semibold);
+}
+
+/* Login card special styling */
+.login-panel {
+    margin-top: var(--ui2-spacing-xl);
+}
+
+/* =========================================================================
+ * BUTTONS
+ * Button enhancements
+ * ========================================================================= */
+.btn {
+    border-radius: var(--ui2-border-radius);
+    font-weight: var(--ui2-font-weight-medium);
+    transition: all var(--ui2-transition-fast);
+}
+
+.btn-default {
+    --bs-btn-color: var(--ui2-white);
+    --bs-btn-bg: var(--ui2-primary);
+    --bs-btn-border-color: var(--ui2-primary);
+    --bs-btn-hover-color: var(--ui2-white);
+    --bs-btn-hover-bg: var(--ui2-primary-hover);
+    --bs-btn-hover-border-color: var(--ui2-primary-active);
+}
+
+/* Large button for login/register forms */
+.btn-lg {
+    padding: 0.75rem 1.25rem;
+    font-size: var(--ui2-font-size-lg);
+}
+
+/* =========================================================================
+ * ALERTS
+ * Alert component styling
+ * ========================================================================= */
+.alert {
+    border-radius: var(--ui2-border-radius);
+}
+
+/* =========================================================================
+ * COLLAPSE BUTTON
+ * Accordion/collapse toggle
+ * ========================================================================= */
+.mw_collaps_btn {
+    float: right;
+    width: 20px;
+    height: 20px;
+    color: var(--ui2-gray-700) !important;
+    cursor: pointer;
+}
+
+.mw_collaps_btn .fa.arrow::before {
+    content: "\f104";
+}
+
+.mw_collaps_btn.collapsed .fa.arrow::before {
+    content: "\f107";
+}
+
+/* =========================================================================
+ * LOADING STATES
+ * Loading indicators and overlays
+ * ========================================================================= */
+.mw_loading {
+    margin: var(--ui2-spacing-xl);
+    text-align: center;
+    vertical-align: middle;
+    padding: var(--ui2-spacing-md);
+    border: 3px dashed var(--ui2-gray-300);
+    min-height: 150px;
+    padding-top: var(--ui2-spacing-xl);
+}
+
+.mw_loading_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--ui2-white);
+    opacity: 0.5;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+.mw_loading_overlay_icon {
+    vertical-align: middle;
+    margin: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}
+
+.mw_loading_placeholder {
+    border: 3px dashed var(--ui2-gray-300);
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    background: var(--ui2-white);
+    display: table;
+    opacity: 0.5;
+}
+
+.mw_loading_placeholder_in {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 36px;
+}
+
+/* =========================================================================
+ * DRAG & DROP
+ * Drop target styling
+ * ========================================================================= */
+.mw_ui_drop_target_active {
+    display: block;
+    border: 3px dashed var(--ui2-gray-500);
+    height: 30px;
+}
+
+.mw_ui_drop_target_inactive {
+    display: block;
+    height: 10px;
+}
+
+.mw_ui_drop_target_msg {
+    color: var(--ui2-gray-600);
+}
+
+/* =========================================================================
+ * USER ELEMENTS
+ * User avatar, names, etc.
+ * ========================================================================= */
+.mw-user-img {
+    margin-right: var(--ui2-spacing-md);
+}
+
+/* =========================================================================
+ * MENU ITEMS
+ * Custom menu styling
+ * ========================================================================= */
+.mw-cus-mnu-item {
+    margin-top: var(--ui2-spacing-md);
+    margin-bottom: var(--ui2-spacing-md);
+    padding-bottom: var(--ui2-spacing-sm);
+    padding-left: var(--ui2-spacing-md);
+    padding-right: var(--ui2-spacing-md);
+}
+
+/* =========================================================================
+ * UI CONTAINERS
+ * General content containers
+ * ========================================================================= */
+.mw_ui_inner_space {
+    background-color: var(--ui2-white);
+    border: 1px solid var(--ui2-border-color);
+    border-radius: var(--ui2-border-radius-lg);
+    padding: var(--ui2-spacing-xl);
+    margin-bottom: var(--ui2-spacing-lg);
+    overflow: hidden;
+}
+
+.mw_ui_frm_container {
+    max-width: 800px;
+}
+
+.ui_grid_container {
+    padding-top: var(--ui2-spacing-md);
+    padding-bottom: var(--ui2-spacing-md);
+}
+
+.ui_sub_container {
+    padding-top: 0;
+    padding-bottom: var(--ui2-spacing-md);
+    padding-left: var(--ui2-spacing-sm);
+    padding-right: var(--ui2-spacing-sm);
+}
+
+/* =========================================================================
+ * DX FORM INTEGRATION
+ * DevExtreme form styling
+ * ========================================================================= */
+.mw-dx-form-control-placeholder {
+    /* Placeholder container */
+}
+
+.mw-dx-form-control-placeholder .dx-field-value,
+.mw-dx-form-control-placeholder .dx-field-value-static {
+    float: none;
+    width: 100% !important;
+}
+
+.mw-dx-normal-ctr {
+    height: 36px;
+}
+
+/* =========================================================================
+ * DEVEXTREME DATAGRID ENHANCEMENTS
+ * Migrated from theme (FASE 4)
+ * ========================================================================= */
+
+/* Ultra-thin scrollbars for cleaner look */
+.dx-scrollable-scrollbar.dx-scrollbar-vertical .dx-scrollable-scroll {
+    width: 4px;
+}
+
+.dx-scrollable-scrollbar.dx-scrollbar-horizontal .dx-scrollable-scroll {
+    height: 4px;
+}
+
+/* Card integration - seamless borders */
+.card > .mw_ui_inner_space,
+.card-body > .mw_ui_inner_space {
+    border: none;
+    border-radius: 0;
+}
+
+/* =========================================================================
+ * NAV TITLE
+ * Main UI title in nav
+ * ========================================================================= */
+.nav_main_ui_title {
+    color: var(--ui2-white);
+}
+
+/* =========================================================================
+ * ICONS
+ * Menu icons
+ * ========================================================================= */
+.mnuicon {
+    margin-right: var(--ui2-spacing-sm);
+}
+
+/* =========================================================================
+ * PROGRESS BAR
+ * Timeout bars, etc.
+ * ========================================================================= */
+.progress {
+    border-radius: var(--ui2-border-radius);
+    background-color: var(--ui2-gray-200);
+}
+
+.progress-bar {
+    transition: width 1s linear;
+}
+
+/* =========================================================================
+ * CAPTCHA
+ * Captcha input styling
+ * ========================================================================= */
+.input-group .captcha-img {
+    max-height: 40px;
+}
+
+/* =========================================================================
+ * TABLES
+ * Table styling
+ * ========================================================================= */
+.table {
+    --bs-table-bg: transparent;
+}
+
+.table thead th {
+    font-weight: var(--ui2-font-weight-semibold);
+    font-size: var(--ui2-font-size-sm);
+    text-transform: uppercase;
+    color: var(--ui2-gray-600);
+}
+/* Toggle badge links */
+a.badge,
+a.badge:link,
+a.badge:visited,
+a.badge:active {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--ui2-white) !important;
+  padding: 0.4em 0.8em;
+  transition: opacity 0.2s;
+}
+a.badge:hover {
+  opacity: 0.8;
+  color: var(--ui2-white) !important;
+}

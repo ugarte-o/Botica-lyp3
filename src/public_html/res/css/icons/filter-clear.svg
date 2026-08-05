@@ -1,0 +1,24 @@
+<svg width="20" height="20" viewBox="0 0 24 24"
+     xmlns="http://www.w3.org/2000/svg" fill="none"
+     stroke="currentColor" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round"
+>
+
+  <!-- Funnel: trimmed to avoid drawing behind the circle -->
+  <path d="
+    M4 4
+    H13.5       
+    L13 12
+    V17
+    L9 20
+    V12
+    L4 4
+    Z" />
+
+  <!-- Badge circle -->
+  <circle cx="18" cy="6" r="4" stroke="currentColor" />
+
+  <!-- Bold X inside badge -->
+  <line x1="16" y1="4" x2="20" y2="8" stroke="currentColor" stroke-width="2" />
+  <line x1="20" y1="4" x2="16" y2="8" stroke="currentColor" stroke-width="2" />
+</svg>

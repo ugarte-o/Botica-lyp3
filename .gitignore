@@ -1,0 +1,32 @@
+# Configuración privada de la aplicación
+src/app/cfg/db.php
+src/app/cfg/install.php
+src/app/cfg/sysmail.php
+
+# Datos generados localmente
+src/appdata/
+src/public_html/data/
+src/public_html/kcfinder/
+src/sysbackup/
+src/sftp-config.json
+
+# Módulos opcionales o locales
+src/mwap/modules/mwx/
+src/public_html/res/modules/mwx/
+
+# Entorno y editores
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+*.log
+*.tmp
+*.bak
+*.bak-tunnel
+**/.user.ini
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini

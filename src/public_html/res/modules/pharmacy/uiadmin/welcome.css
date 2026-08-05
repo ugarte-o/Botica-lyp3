@@ -1,0 +1,381 @@
+:root {
+    --welcome-text: #162238;
+    --welcome-muted: #68778e;
+    --welcome-border: #dbe3ec;
+    --welcome-green: #149b67;
+    --welcome-blue: #2583ef;
+    --welcome-orange: #f59e0b;
+    --welcome-red: #ef4444;
+}
+
+.botica-welcome {
+    width: 100%;
+    color: var(--welcome-text);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.botica-welcome * {
+    box-sizing: border-box;
+}
+
+.welcome-card {
+    background: #fff;
+    border: 1px solid var(--welcome-border);
+    border-radius: 13px;
+    box-shadow: 0 2px 7px rgba(15, 26, 48, .07);
+}
+
+.welcome-hero {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.welcome-hero-main {
+    min-height: 128px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 26px 40px;
+    background: linear-gradient(100deg, #fafffc, #eefaf5);
+}
+
+.welcome-hand {
+    flex: 0 0 64px;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    color: var(--welcome-green);
+    font-size: 27px;
+    border-radius: 50%;
+    background: #dff5eb;
+}
+
+.welcome-hero-copy h2 {
+    margin: 0 0 8px;
+    font-size: 27px;
+}
+
+.welcome-hero-copy p {
+    margin: 0;
+    color: var(--welcome-muted);
+    font-size: 16px;
+}
+
+.welcome-pharmacy {
+    position: relative;
+    width: 125px;
+    height: 84px;
+    margin-left: auto;
+    margin-right: 20px;
+    color: var(--welcome-green);
+}
+
+.welcome-cross::before,
+.welcome-cross::after {
+    content: "";
+    position: absolute;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #49c997, var(--welcome-green));
+    filter: drop-shadow(0 8px 8px rgba(20, 155, 103, .15));
+}
+
+.welcome-cross::before {
+    width: 34px;
+    height: 76px;
+    left: 46px;
+    top: 3px;
+}
+
+.welcome-cross::after {
+    width: 76px;
+    height: 34px;
+    left: 25px;
+    top: 24px;
+}
+
+.welcome-pharmacy > i {
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    z-index: 2;
+    padding: 7px;
+    color: #fff;
+    font-size: 19px;
+    border-radius: 18px;
+    background: var(--welcome-green);
+}
+
+.welcome-verse {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 12px 40px;
+    border-top: 1px solid #d8ebe2;
+}
+
+.welcome-verse > i {
+    color: var(--welcome-green);
+    font-size: 28px;
+}
+
+.welcome-verse > div {
+    padding-left: 18px;
+    border-left: 2px solid #b9ead5;
+}
+
+.welcome-verse strong,
+.welcome-verse small {
+    display: block;
+}
+
+.welcome-verse strong {
+    margin-bottom: 4px;
+}
+
+.welcome-verse small {
+    color: var(--welcome-green);
+}
+
+.welcome-section-title {
+    margin: 0 0 12px;
+    font-size: 19px;
+}
+
+.welcome-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 17px;
+}
+
+.welcome-shortcut {
+    min-width: 0;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.welcome-shortcut:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 26, 48, .11);
+}
+
+.welcome-shortcut-icon {
+    flex: 0 0 52px;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+}
+
+.verde {
+    color: var(--welcome-green);
+}
+
+.azul {
+    color: var(--welcome-blue);
+}
+
+.naranja {
+    color: var(--welcome-orange);
+}
+
+.welcome-shortcut-copy {
+    min-width: 0;
+}
+
+.welcome-shortcut-copy strong,
+.welcome-shortcut-copy small {
+    display: block;
+}
+
+.welcome-shortcut-copy strong {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.welcome-shortcut-copy small {
+    overflow: hidden;
+    color: var(--welcome-muted);
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.welcome-arrow {
+    margin-left: auto;
+    color: #637186;
+}
+
+.welcome-panels {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 17px;
+}
+
+.welcome-panel {
+    padding: 0 17px 14px;
+}
+
+.welcome-panel > h3 {
+    margin: 0 -17px;
+    padding: 15px 17px 11px;
+    font-size: 17px;
+}
+
+.welcome-alert-list {
+    overflow: hidden;
+    border: 1px solid var(--welcome-border);
+    border-radius: 9px;
+}
+
+.welcome-alert {
+    width: 100%;
+    min-height: 43px;
+    display: grid;
+    grid-template-columns: 27px minmax(170px, 1fr) auto 18px;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    color: inherit;
+    text-align: left;
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid var(--welcome-border);
+    cursor: pointer;
+}
+
+.welcome-alert:last-child {
+    border-bottom: 0;
+}
+
+.welcome-alert:hover {
+    background: #f8fafc;
+}
+
+.welcome-alert > i {
+    color: #6b788c;
+}
+
+.welcome-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.welcome-dot.advertencia {
+    background: var(--welcome-orange);
+}
+
+.welcome-dot.peligro {
+    background: var(--welcome-red);
+}
+
+.welcome-alert-message.advertencia {
+    color: var(--welcome-orange);
+}
+
+.welcome-alert-message.peligro {
+    color: var(--welcome-red);
+}
+
+.welcome-summary-row {
+    min-height: 46px;
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--welcome-border);
+}
+
+.welcome-summary-icon {
+    display: grid;
+    place-items: center;
+    width: 31px;
+    height: 31px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+}
+
+/* Los números no heredan los colores de los iconos. */
+.welcome-summary-number {
+    color: var(--welcome-text) !important;
+    font-weight: 700;
+}
+
+.welcome-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 14px;
+    padding: 0;
+    color: var(--welcome-green);
+    font-weight: 700;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    .welcome-shortcuts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .welcome-panels {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    .welcome-hero-main {
+        padding: 22px;
+    }
+
+    .welcome-hero-copy h2 {
+        font-size: 21px;
+    }
+
+    .welcome-hand {
+        flex-basis: 52px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .welcome-pharmacy {
+        display: none;
+    }
+
+    .welcome-verse {
+        padding: 12px 22px;
+    }
+
+    .welcome-shortcuts {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-alert {
+        grid-template-columns: 20px 1fr 17px;
+    }
+
+    .welcome-alert-message {
+        grid-column: 2;
+    }
+}
+
+.botica-welcome a {
+    text-decoration: none;
+}
+
+.botica-welcome a:hover {
+    text-decoration: none;
+}

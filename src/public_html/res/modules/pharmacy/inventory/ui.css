@@ -1,0 +1,231 @@
+.container-fluid {
+    padding: 0 !important;
+}
+
+.inventario-page {
+    min-height: 76vh;
+    padding: 25px;
+    background: #f4f7fb;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.inventario-header {
+    margin-bottom: 22px;
+}
+
+.inventario-title {
+    margin: 0;
+    color: #172033;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.inventario-subtitle {
+    margin: 6px 0 0;
+    color: #687386;
+    font-size: 14px;
+}
+
+.mensaje-error {
+    margin-bottom: 18px;
+    padding: 13px 15px;
+    color: #842029;
+    background: #f8d7da;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+}
+
+.resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.resumen-card {
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #e1e7ef;
+    border-radius: 11px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+}
+
+.resumen-label {
+    margin: 0;
+    color: #687386;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.resumen-numero {
+    margin: 8px 0 0;
+    color: #172033;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.normal {
+    border-left: 5px solid #198754;
+}
+
+.bajo {
+    border-left: 5px solid #f59e0b;
+}
+
+.agotado {
+    border-left: 5px solid #dc3545;
+}
+
+.vencimiento {
+    border-left: 5px solid #7c3aed;
+}
+
+.inventario-panel {
+    background: #ffffff;
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.inventario-panel-header {
+    padding: 17px 20px;
+    border-bottom: 1px solid #e1e7ef;
+}
+
+.inventario-panel-title {
+    margin: 0;
+    color: #273044;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.inventario-panel-body {
+    padding: 20px;
+}
+
+.herramientas {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 210px 190px auto;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.inventario-form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccd3dd;
+    border-radius: 7px;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 14px;
+}
+
+.inventario-form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.12);
+}
+
+.btn-actualizar {
+    padding: 10px 16px;
+    background: #ffffff;
+    border: 1px solid #ccd3dd;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-actualizar:hover {
+    background: #f3f4f6;
+}
+
+.tabla-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-inventario {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.tabla-inventario th {
+    padding: 12px;
+    background: #f3f4f6;
+    border-bottom: 2px solid #d1d5db;
+    text-align: left;
+    font-size: 13px;
+}
+
+.tabla-inventario td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 13px;
+}
+
+.estado {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 18px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.estado-disponible {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.estado-bajo {
+    color: #92400e;
+    background: #fef3c7;
+}
+
+.estado-agotado {
+    color: #991b1b;
+    background: #fee2e2;
+}
+
+.estado-vencer {
+    color: #5b21b6;
+    background: #ede9fe;
+}
+
+.estado-inactivo {
+    color: #374151;
+    background: #e5e7eb;
+}
+
+.tabla-vacia,
+.sin-resultados {
+    padding: 30px !important;
+    text-align: center;
+    color: #7b8495;
+}
+
+.sin-resultados {
+    margin: 0;
+}
+
+@media (max-width: 1050px) {
+    .resumen-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .herramientas {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .inventario-page {
+        padding: 16px 10px;
+    }
+
+    .resumen-grid,
+    .herramientas {
+        grid-template-columns: 1fr;
+    }
+}
