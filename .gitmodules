@@ -1,0 +1,32 @@
+[submodule "src/public_html/res/js"]
+	path = src/public_html/res/js
+	url = https://github.com/rodrigovecco/meralda_js_submodule.git
+[submodule "src/public_html/res/css"]
+	path = src/public_html/res/css
+	url = https://github.com/rodrigovecco/meralda_css.git
+[submodule "src/public_html/res/thirdparty"]
+	path = src/public_html/res/thirdparty
+	url = https://github.com/rodrigovecco/meralda-thirdparty-public.git
+	branch = main
+[submodule "docs"]
+	path = docs
+	url = https://github.com/rodrigovecco/meralda-docs.git
+	branch = main
+[submodule "src/mwap/modulesext"]
+	path = src/mwap/modulesext
+	url = https://github.com/rodrigovecco/meralda-thirdparty-modules.git
+	branch = main
+[submodule "src/public_html/res/meralda"]
+	path = src/public_html/res/meralda
+	url = https://github.com/rodrigovecco/meralda_public_res.git
+[submodule "src/mwap/modules/themes/default"]
+	path = src/mwap/modules/themes/default
+	url = https://github.com/rodrigovecco/meralda-theme-default.git
+	branch = main
+[submodule "src/public_html/res/themes/default"]
+	path = src/public_html/res/themes/default
+	url = https://github.com/rodrigovecco/meralda-theme-default-public.git
+	branch = main
+[submodule "src/mwap/modules/mw"]
+	path = src/mwap/modules/mw
+	url = https://github.com/rodrigovecco/meralda_mw_modules.git
