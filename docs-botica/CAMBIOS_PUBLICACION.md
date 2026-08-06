@@ -1,47 +1,59 @@
-# Cambios realizados para la versión pública
+# Cambios aplicados a la documentación y estructura pública
 
-Fecha: 5 de agosto de 2026.
+Fecha de actualización: 5 de agosto de 2026.
 
-## Documentación
+## Documentación actualizada
 
-- Se reemplazaron referencias antiguas a `botica`, `docs8` y `Botica(31)` por la estructura real de `Botica(33)`.
-- Se documentó el módulo actual `pharmacy` y sus rutas `orders`, `payments`, `inventory`, `addproduct` y `reports`.
-- Se explicó la función de `ap.php`, `mainMan`, managers, interfaces, CSS y JavaScript.
-- Se añadieron instrucciones de instalación, seguridad, mantenimiento y publicación en GitHub.
-- Se retiró el archivo Word de la copia pública; la documentación oficial queda en Markdown dentro de `docs-botica`.
+- Se documentó la aplicación activa `mwap_pharmacy_ap`.
+- Se actualizaron las rutas `orders`, `payments`, `inventory`, `addproduct` y `reports`.
+- Se documentó la centralización de managers mediante `mainMan`.
+- Se explicó la separación entre managers, interfaces PHP/HTML, CSS y JavaScript.
+- Se confirmó que Mercado Pago no forma parte de la versión actual.
+- Se documentó que el antiguo Demo de aplicación fue retirado y que `src/mwap/modules/mw/demo` pertenece al núcleo de Meralda.
+- Se eliminó de la documentación la dependencia de archivos `*.example.php` que no existen en este proyecto.
+- Se añadió una guía completa para instalar la base de datos y crear el primer administrador.
 
-## Seguridad
+## Submódulos de Meralda
 
-- Se eliminaron de la copia pública las credenciales locales de MySQL.
-- Se eliminaron claves de instalación y configuración SMTP local.
-- Se agregaron `db.example.php`, `install.example.php` y `sysmail.example.php`.
-- Se actualizó `.gitignore` para impedir que los archivos privados se publiquen accidentalmente.
-- Se desactivó el modo debug por defecto.
-- Se retiraron respaldos `.bak-tunnel`.
+Se añadió `.gitmodules` con las URL originales de:
+
+- núcleo `mw`;
+- JavaScript y CSS generales;
+- recursos públicos de Meralda;
+- dependencias de terceros;
+- módulos externos;
+- tema predeterminado PHP y público;
+- documentación oficial de Meralda.
+
+El archivo `.gitmodules` declara las rutas y los repositorios. Para que GitHub los muestre como submódulos reales, cada ruta debe quedar registrada como gitlink en el repositorio local y después confirmarse mediante un commit.
 
 ## Base de datos
 
-- Se añadió `database/pharmacy_schema.sql` con las tablas `productos`, `pedidos`, `detalle_pedido` y `pagos`.
-- Se agregaron claves, índices, relaciones y restricciones compatibles con la lógica actual.
+Se conserva:
 
-## GitHub
+```text
+database/pharmacy_schema.sql
+```
 
-- Se eliminó el historial Git heredado del proyecto original.
-- Se creó un repositorio Git nuevo con un único commit limpio.
-- Se conservaron las dependencias oficiales de Meralda como submódulos.
-- Se añadió `scripts/publicar-github.ps1` para configurar el remoto, descargar submódulos y publicar.
-- Se agregaron `SECURITY.md`, `CONTRIBUTING.md` y `NOTICE.md`.
+Este archivo crea las tablas propias:
 
-## Independencia de Demo
+```text
+productos
+pedidos
+detalle_pedido
+pagos
+```
 
-- Se retiró `example/demo` de la versión pública.
-- Se confirmó que la aplicación activa extiende `mwap_pharmacy_ap`.
-- Se confirmó que las rutas PHP y los recursos públicos usan `pharmacy`.
-- El módulo `demo` que pueda existir dentro del núcleo `mw` pertenece al framework y no es una dependencia de Botica.
+La instalación completa se documenta en:
 
-## Validaciones
+```text
+docs-botica/lng/es/botica/10-instalacion-base-de-datos.md
+```
 
-- 25 archivos PHP revisados sin errores de sintaxis.
-- 5 archivos JavaScript revisados sin errores de sintaxis.
-- Búsqueda de las credenciales locales conocidas sin coincidencias.
-- Repositorio Git verificado sin remoto heredado y sin archivos privados rastreados.
+## Cambios que no se realizaron
+
+- No se modificó la lógica PHP de Botica.
+- No se modificaron los archivos CSS o JavaScript.
+- No se agregaron archivos de configuración `*.example.php`.
+- No se ejecutó una instalación limpia; esa prueba queda a cargo del propietario del proyecto.
+- No se eliminaron los componentes internos de Meralda.

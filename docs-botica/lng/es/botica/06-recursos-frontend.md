@@ -1,6 +1,34 @@
-# 6. CSS, JavaScript y recursos públicos
+# 6. PHP, HTML, CSS y JavaScript
 
-## Ubicación
+## Separación usada por Botica y Meralda
+
+```text
+man.php           lógica de negocio, SQL y transacciones
+uiadmin/*.php     control de pantalla y HTML dinámico
+ui.css            diseño
+ui.js             comportamiento en el navegador
+```
+
+El HTML dinámico está dentro de métodos PHP como `do_exec_page_in()`. No existe un archivo `.html` independiente por cada módulo administrativo.
+
+Ejemplo conceptual:
+
+```php
+function do_exec_page_in()
+{
+    $man = $this->mainap->mainMan->orders;
+    $productos = $man->get_productos_disponibles();
+?>
+    <div class="orders-page">
+        <!-- HTML dinámico -->
+    </div>
+<?php
+}
+```
+
+La lógica importante no debe quedar en ese HTML; se mantiene en el manager.
+
+## Recursos propios
 
 ```text
 src/public_html/res/modules/pharmacy/
@@ -17,34 +45,27 @@ src/public_html/res/modules/pharmacy/
 └── reports/ui.js
 ```
 
-## Qué hace PHP
+## Registro de recursos
 
-La clase `uiadmin` prepara la página, obtiene datos desde un manager y genera el HTML inicial. También registra los archivos CSS y JavaScript con rutas públicas.
+Las interfaces usan los preparadores de Meralda para registrar CSS y JavaScript. La ruta física está dentro de `src/public_html`, mientras que el navegador recibe rutas como:
 
-## Qué hace JavaScript
+```text
+/res/modules/pharmacy/orders/ui.css
+/res/modules/pharmacy/orders/ui.js
+```
 
-- Pedidos: carrito, cantidades, filtros y envío del formulario.
-- Cobranza: selección del pedido, cálculo visual, ticket e impresión.
-- Inventario: búsqueda, filtros y estados visuales.
-- Productos: formularios de registro, aumento de stock y eliminación.
-- Reportes: filtros, gráficos, tablas y exportación disponible en la interfaz.
+## Comparación con Demo
 
-JavaScript mejora la experiencia, pero las validaciones decisivas se repiten en PHP.
+El Demo original seguía el mismo patrón de interfaz PHP que genera HTML y recursos públicos separados. La diferencia es funcional: Demo presenta ejemplos del framework; Botica implementa reglas reales de productos, stock, pedidos, pagos y reportes.
 
-## Qué hace CSS
-
-Cada módulo posee su propio archivo para evitar que una pantalla modifique accidentalmente otra. Los recursos de Botica no se guardan dentro de carpetas Demo.
+`src/mwap/modules/mw/demo` forma parte del núcleo `mw` y no reemplaza ni controla el módulo `pharmacy`.
 
 ## Caché
 
-Después de cambiar CSS o JavaScript:
+Después de modificar un recurso:
 
 ```text
 Ctrl + F5
 ```
 
-También puede incrementarse una versión en la URL del recurso, por ejemplo `?v=4` a `?v=5`.
-
-## Regla de seguridad
-
-No guardes contraseñas, tokens ni credenciales en JavaScript, HTML, `localStorage` o CSS. Todo secreto debe permanecer en configuración privada del servidor.
+Las credenciales nunca deben guardarse en HTML, CSS, JavaScript o `localStorage`.

@@ -2,13 +2,29 @@
 
 ## Cadena de inicio
 
-El navegador entra por:
-
 ```text
+Navegador
+  ↓
 src/public_html/admin/index.php
+  ↓
+src/public_html/admin/init.php
+  ↓
+src/public_html/init.php
+  ↓
+src/app/init.php
+  ↓
+mwap_pharmacy_ap
+  ↓
+interfaz administrativa
+  ↓
+mainMan
+  ↓
+manager especializado
+  ↓
+base de datos
 ```
 
-Ese archivo carga el arranque público y finalmente `src/app/init.php`. La aplicación registra el prefijo propio:
+`src/app/init.php` registra el prefijo `pharmacy`:
 
 ```php
 $GLOBALS["__mw_autoload_manager"]
@@ -19,7 +35,7 @@ $GLOBALS["__mw_autoload_manager"]
     );
 ```
 
-Después declara:
+Después declara la aplicación activa:
 
 ```php
 class mw_app extends mwap_pharmacy_ap
@@ -27,20 +43,26 @@ class mw_app extends mwap_pharmacy_ap
 }
 ```
 
-Esto demuestra que la aplicación principal es Botica y no Demo.
+Esto confirma que Botica es la aplicación principal.
 
 ## Clase de aplicación
 
-`src/mwap/modules/pharmacy/ap.php` crea dos piezas:
+`src/mwap/modules/pharmacy/ap.php` proporciona:
 
-- `mwap_pharmacy_uiadmin_main`: interfaz administrativa principal.
-- `mwap_pharmacy_mainman`: punto central de managers de negocio.
-
-La propiedad virtual `mainMan` obtiene el manager principal mediante el sistema de submanagers de Meralda.
+- la interfaz administrativa principal;
+- el acceso a `mainMan`;
+- la integración con las clases base de Meralda.
 
 ## mainMan
 
-`base/mainmanabs.php` expone de manera diferida:
+Los archivos son:
+
+```text
+src/mwap/modules/pharmacy/mainman.php
+src/mwap/modules/pharmacy/base/mainmanabs.php
+```
+
+Exponen de manera diferida:
 
 ```text
 mainMan->orders
@@ -50,11 +72,11 @@ mainMan->products
 mainMan->reports
 ```
 
-Cada manager se crea solo cuando una pantalla lo solicita. Las interfaces no deben ejecutar `new mwap_pharmacy_*_man()` directamente.
+Las interfaces solicitan el manager correspondiente y no lo crean directamente.
 
 ## Interfaz principal
 
-`uiadmin/main.php` define:
+`src/mwap/modules/pharmacy/uiadmin/main.php` configura:
 
 ```text
 url_base_path = /admin/
@@ -62,24 +84,19 @@ subinterface_def_code = welcome
 su_cods_for_side = pharmacy,mwx,users,cfg
 ```
 
-- `welcome` es el inicio.
-- `pharmacy` contiene las cinco áreas de Botica.
-- `users` y `cfg` son funciones administrativas del framework.
-- `mwx` solo se crea cuando su clase opcional está disponible.
+`mwx` solo se crea cuando el módulo opcional está disponible. `users` y `cfg` pertenecen a las funciones administrativas del framework.
 
 ## Menú de Botica
 
-`uiadmin.php` registra:
+`src/mwap/modules/pharmacy/uiadmin.php` registra:
 
 ```text
 orders,payments,inventory,addproduct,reports
 ```
 
-Cada código crea su subinterfaz correspondiente y se agrega al menú lateral con su icono.
-
 ## Permisos
 
-La interfaz principal de Botica y cada pantalla propia implementan:
+Las pantallas propias aplican:
 
 ```php
 function is_allowed()
@@ -88,4 +105,4 @@ function is_allowed()
 }
 ```
 
-Por ello, el usuario debe iniciar sesión y poseer el permiso `admin`.
+La autenticación y el permiso se resuelven mediante Meralda.

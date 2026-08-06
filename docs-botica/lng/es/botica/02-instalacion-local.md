@@ -2,66 +2,68 @@
 
 ## Requisitos
 
-- Windows 10 u 11, Linux o macOS.
 - Apache o Nginx.
-- PHP 8.1 o superior.
+- PHP 8.1 o superior con `mysqli`, `mbstring`, `json` y `session`.
 - MySQL 8 o MariaDB 10.6 o superior.
-- Extensiones PHP `mysqli`, `mbstring`, `json` y `session`.
-- Git para descargar los submódulos de Meralda.
+- Git para trabajar con los submódulos de Meralda.
 
-## Clonar correctamente
+## Clonar
+
+Cuando el repositorio ya tenga las rutas registradas como submódulos reales:
 
 ```bash
 git clone --recurse-submodules URL_DEL_REPOSITORIO botica-lyp
 cd botica-lyp
 ```
 
-Cuando falta una dependencia:
+En una copia existente:
 
 ```bash
+git submodule sync --recursive
 git submodule update --init --recursive
 ```
 
 ## DocumentRoot
 
-El servidor web debe apuntar únicamente a:
+El servidor debe exponer únicamente:
 
 ```text
 Botica-LyP/src/public_html
 ```
 
-Nunca expongas la raíz completa, porque `src/app` y `src/mwap` contienen código del servidor.
-
-## Base de datos
-
-1. Crea una base llamada `botica`.
-2. Instala las tablas base de Meralda desde `docs/db/`.
-3. Ejecuta `database/pharmacy_schema.sql`.
-4. Crea un usuario de MySQL dedicado a esta base.
-
 ## Configuración local
 
-Copia los ejemplos:
+Este proyecto no agrega archivos `*.example.php`. Configura directamente los archivos locales:
 
-```powershell
-Copy-Item .\src\app\cfg\db.example.php .\src\app\cfg\db.php
-Copy-Item .\src\app\cfg\install.example.php .\src\app\cfg\install.php
-Copy-Item .\src\app\cfg\sysmail.example.php .\src\app\cfg\sysmail.php
+```text
+src/app/cfg/db.php
+src/app/cfg/install.php
+src/app/cfg/sysmail.php
 ```
 
-Ejemplo de `db.php`:
+### `db.php`
+
+Debe indicar el host, nombre de base, usuario, contraseña y puerto que realmente funcionan en la computadora:
 
 ```php
+<?php
 $data = array(
     "host" => "127.0.0.1",
     "db"   => "botica",
     "user" => "botica_user",
-    "pass" => "TU_CONTRASENA_LOCAL",
+    "pass" => "CONTRASENA_LOCAL",
     "port" => "3306",
 );
+?>
 ```
 
-No confirmes este archivo en Git.
+No publiques el valor real de `pass`.
+
+## Base de datos
+
+Sigue la guía completa:
+
+- [Instalación de la base de datos](10-instalacion-base-de-datos.md)
 
 ## VirtualHost de Apache
 
@@ -77,7 +79,7 @@ No confirmes este archivo en Git.
 </VirtualHost>
 ```
 
-Archivo `hosts`:
+En el archivo `hosts`:
 
 ```text
 127.0.0.1 botica
@@ -89,12 +91,13 @@ Abrir:
 http://botica/admin/
 ```
 
-## Modo de depuración
+## Depuración
 
-La versión pública usa:
+La configuración actual usa:
 
 ```ini
 debug_mode = "NO"
+debug_restrict_ips = "YES"
 ```
 
-Solo durante una prueba local puede cambiarse temporalmente a `YES`, manteniendo `debug_restrict_ips = "YES"`.
+Activa depuración solo temporalmente y únicamente en local.

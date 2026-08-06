@@ -1,8 +1,8 @@
 # 7. Seguridad y publicación
 
-## Archivos privados
+## Configuración privada
 
-La versión pública ignora:
+Los archivos locales son:
 
 ```text
 src/app/cfg/db.php
@@ -10,48 +10,41 @@ src/app/cfg/install.php
 src/app/cfg/sysmail.php
 ```
 
-Solo se incluyen archivos `.example.php`.
+El proyecto no agrega copias `*.example.php`. Antes de publicar:
 
-## Datos que no deben subir a GitHub
+1. Verifica que esos archivos estén ignorados.
+2. Comprueba que no estén ya rastreados por Git.
+3. No publiques contraseñas, claves de instalación ni credenciales SMTP.
 
-- Contraseñas.
-- Tokens o claves privadas.
-- Exportaciones con datos reales.
-- nombres, DNI, teléfonos o direcciones de clientes.
-- archivos de respaldo o logs.
+Comprobación:
 
-## Configuración de producción
-
-Mantén:
-
-```ini
-debug_mode = "NO"
+```powershell
+git check-ignore -v .\src\app\cfg\db.php
+git ls-files .\src\app\cfg\db.php .\src\app\cfg\install.php .\src\app\cfg\sysmail.php
 ```
 
-El servidor debe exponer únicamente:
+Si `git ls-files` muestra alguno, retirarlo del índice sin borrarlo del disco:
 
-```text
-src/public_html
+```powershell
+git rm --cached .\src\app\cfg\db.php
+git rm --cached .\src\app\cfg\install.php
+git rm --cached .\src\app\cfg\sysmail.php
 ```
 
-Usa HTTPS, un usuario de base de datos dedicado y copias de seguridad.
+## Producción
 
-## Permisos de la aplicación
+- Mantén `debug_mode = "NO"`.
+- Expón únicamente `src/public_html`.
+- Usa HTTPS.
+- Usa un usuario de base de datos dedicado.
+- Deshabilita el instalador después de crear el administrador.
+- Realiza copias de seguridad.
+- No publiques datos reales de clientes.
 
-Las pantallas propias requieren `admin`. Esto evita el acceso anónimo, pero una instalación pública también necesita:
+## Permisos
 
-- contraseña fuerte para cada usuario,
-- actualización periódica del framework,
-- limitación de acceso al instalador,
-- revisión de permisos del servidor,
-- protección y respaldo de la base.
-
-## Túnel de Cloudflare
-
-Un túnel rápido sirve para una demostración temporal, no convierte el equipo local en un hosting permanente. La URL cambia al reiniciar el túnel y el proceso debe permanecer abierto.
-
-Para producción usa un hosting, un dominio y un certificado HTTPS.
+Las pantallas propias requieren `admin`. Esto complementa, pero no sustituye, la seguridad del servidor y de la base de datos.
 
 ## GitHub
 
-La publicación del código no publica automáticamente una página PHP funcional. GitHub Pages solo sirve contenido estático; Botica necesita PHP y MySQL. GitHub se utiliza para alojar el código fuente, mientras que la aplicación debe desplegarse en un servidor compatible.
+GitHub aloja el código fuente. Botica necesita PHP y MySQL, por lo que no funciona como aplicación completa en GitHub Pages.

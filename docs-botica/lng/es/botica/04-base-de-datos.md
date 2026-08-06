@@ -1,9 +1,14 @@
 # 4. Base de datos y flujo de información
 
-## Archivos SQL
+## Archivos SQL disponibles
 
-- Tablas del framework: `docs/db/`.
-- Tablas de Botica: `database/pharmacy_schema.sql`.
+```text
+docs-botica/db/meralda_base_tables.sql   tablas base del framework
+docs-botica/db/initial_user.sql          usuario inicial opcional
+database/pharmacy_schema.sql             tablas propias de Botica
+```
+
+La instalación paso a paso está en [10-instalacion-base-de-datos.md](10-instalacion-base-de-datos.md).
 
 ## Tablas propias
 
@@ -20,39 +25,27 @@ pagos
 productos 1 ─── N detalle_pedido N ─── 1 pedidos 1 ─── 1 pagos
 ```
 
-## productos
+## Productos
 
-Campos principales:
+Conserva código único, nombre, categoría, precio, stock, stock mínimo, vencimiento, estado y marcas de tiempo.
 
-| Campo | Uso |
-|---|---|
-| `id` | Identificador interno |
-| `codigo` | Código único |
-| `nombre` | Nombre comercial |
-| `categoria` | Clasificación |
-| `precio` | Precio unitario |
-| `stock` | Existencia actual |
-| `stock_minimo` | Umbral de alerta |
-| `fecha_vencimiento` | Control de vencimiento |
-| `estado` | Activo o eliminado lógicamente |
+## Pedidos
 
-## pedidos
-
-Guarda datos del cliente, importes, estados y fecha. El código visible se genera después del INSERT con el formato:
+Conserva datos del cliente, importes, estados y fecha. El código visible usa el formato:
 
 ```text
 PED-00001
 ```
 
-El campo `estado_despacho` se conserva porque el INSERT actual lo establece en `Pendiente`, aunque no exista una pantalla de despacho.
+`estado_despacho` permanece en el esquema por compatibilidad, aunque la aplicación actual no tenga una pantalla de despacho.
 
-## detalle_pedido
+## Detalle del pedido
 
-Conserva cada producto vendido, cantidad, precio unitario histórico y subtotal. El precio histórico evita que un cambio futuro en `productos.precio` altere pedidos anteriores.
+Conserva producto, cantidad, precio unitario histórico y subtotal. El precio guardado evita alterar ventas anteriores cuando cambia el precio actual del producto.
 
-## pagos
+## Pagos
 
-Relaciona un pedido con su método de pago, total, monto recibido, vuelto, observación y fecha. El esquema público usa `fecha_pago`.
+Relaciona un pedido con método, total, monto recibido, vuelto, observación y fecha. Existe una restricción única por `pedido_id` para impedir dos pagos del mismo pedido.
 
 ## Transacción de pedido
 
@@ -60,15 +53,15 @@ Relaciona un pedido con su método de pago, total, monto recibido, vuelto, obser
 BEGIN
   validar cliente y carrito
   bloquear productos
-  validar productos activos y stock
+  verificar estado y stock
   insertar pedido
-  generar código PED-xxxxx
+  generar código
   insertar detalles
   descontar stock
 COMMIT
 ```
 
-Cualquier excepción ejecuta `ROLLBACK`.
+Ante una excepción se ejecuta `ROLLBACK`.
 
 ## Transacción de cobranza
 
@@ -76,13 +69,13 @@ Cualquier excepción ejecuta `ROLLBACK`.
 BEGIN
   bloquear pedido
   verificar estado Pendiente
-  validar monto recibido
+  validar monto
   insertar pago
   actualizar pedido a Pagado
-  recuperar detalle del ticket
+  recuperar ticket
 COMMIT
 ```
 
-## Seguridad SQL
+## Acceso SQL
 
-Los valores proporcionados por el usuario se envían con `prepare()` y `bind_param()`. No concatene valores de `$_POST` o `$_GET` directamente en consultas SQL.
+Los managers usan consultas preparadas. Los valores de `$_POST` y `$_GET` no deben concatenarse directamente en SQL.

@@ -1,22 +1,23 @@
 # Guía técnica de Botica LyP
 
-> Estado documentado: **Botica(33).zip**, revisado y preparado para publicación el **5 de agosto de 2026**.
+> Estado documentado: módulo `pharmacy` sobre Meralda, actualizado el 5 de agosto de 2026.
 
 ## Objetivo
 
-Botica LyP es una aplicación administrativa para registrar productos, controlar inventario, crear pedidos, cobrar ventas y consultar reportes. Está desarrollada sobre Meralda, pero su lógica de negocio se encuentra en un módulo propio e independiente llamado `pharmacy`.
+Botica LyP administra productos, inventario, pedidos, cobranza y reportes. Meralda proporciona el framework; la lógica propia se encuentra en `src/mwap/modules/pharmacy`.
 
 ## Estado actual
 
-- La aplicación principal extiende `mwap_pharmacy_ap`.
-- El prefijo `pharmacy` se registra en `src/app/init.php`.
-- La interfaz principal es `mwap_pharmacy_uiadmin_main`.
-- Los managers se obtienen desde `mainMan` y se crean de forma diferida.
-- Pedidos, Cobranza, Inventario, Productos y Reportes tienen PHP, CSS y JavaScript propios.
-- Todas las pantallas propias exigen permiso `admin`.
-- El módulo activo no depende del antiguo módulo de aplicación `demo`.
-- Mercado Pago no forma parte de la versión actual.
-- La versión pública no contiene credenciales ni historial Git heredado.
+- `src/app/init.php` registra el prefijo `pharmacy`.
+- `mw_app` extiende `mwap_pharmacy_ap`.
+- `mainMan` centraliza Orders, Payments, Inventory, Products y Reports.
+- Las interfaces propias exigen permiso `admin`.
+- Los recursos propios se cargan desde `/res/modules/pharmacy/`.
+- El antiguo Demo de aplicación no es una dependencia activa.
+- Mercado Pago no está incluido.
+- La base de datos propia se define en `database/pharmacy_schema.sql`.
+- `.gitmodules` contiene los enlaces originales de los componentes de Meralda.
+- No se agregaron archivos de configuración `*.example.php`.
 
 ## Orden de lectura
 
@@ -24,36 +25,37 @@ Botica LyP es una aplicación administrativa para registrar productos, controlar
 2. [Instalación local](02-instalacion-local.md)
 3. [Módulos de Botica](03-modulos-de-botica.md)
 4. [Base de datos y flujo](04-base-de-datos.md)
-5. [Crear un módulo nuevo](05-crear-un-modulo.md)
-6. [CSS, JavaScript y recursos](06-recursos-frontend.md)
+5. [Crear un módulo](05-crear-un-modulo.md)
+6. [CSS, JavaScript y HTML dinámico](06-recursos-frontend.md)
 7. [Seguridad y publicación](07-seguridad-y-publicacion.md)
 8. [Mantenimiento y pruebas](08-mantenimiento.md)
-9. [Git, submódulos y eliminación de Demo](09-git-y-limpieza-demo.md)
+9. [Git, submódulos y Demo](09-git-y-limpieza-demo.md)
+10. [Instalación completa de la base de datos](10-instalacion-base-de-datos.md)
 
 ## Mapa del proyecto
 
 ```text
 Botica-LyP/
-├── docs/                              Submódulo oficial meralda-docs
-├── docs-botica/                       Documentación propia
-├── database/pharmacy_schema.sql       Tablas propias
+├── .gitmodules                         URL oficiales de Meralda
+├── database/
+│   └── pharmacy_schema.sql             Tablas propias de Botica
+├── docs-botica/                        Documentación propia
 ├── src/
 │   ├── app/
-│   │   ├── init.php                   Registra pharmacy y crea mw_app
-│   │   ├── cfg.ini                    Nombre, moneda y modo debug
-│   │   └── cfg/*.example.php          Configuraciones públicas de ejemplo
+│   │   ├── init.php                    Registra pharmacy y crea mw_app
+│   │   ├── cfg.ini                     Nombre, moneda y debug
+│   │   └── cfg/                        Configuración local privada
 │   ├── mwap/modules/pharmacy/
-│   │   ├── ap.php                     Aplicación base
-│   │   ├── mainman.php                Manager principal
-│   │   ├── base/mainmanabs.php        Managers diferidos
-│   │   ├── uiadmin.php                Menú de módulos
-│   │   ├── uiadmin/main.php           Panel principal
-│   │   ├── uiadmin/welcome.php        Inicio
-│   │   ├── orders/                    Pedidos
-│   │   ├── payments/                  Cobranza
-│   │   ├── inventory/                 Inventario
-│   │   ├── products/                  Productos
-│   │   └── reports/                   Reportes
+│   │   ├── ap.php                      Clase principal
+│   │   ├── mainman.php                 Manager principal
+│   │   ├── base/mainmanabs.php         Managers diferidos
+│   │   ├── uiadmin.php                 Menú de Botica
+│   │   ├── uiadmin/                    Inicio y panel
+│   │   ├── orders/                     Pedidos
+│   │   ├── payments/                   Cobranza
+│   │   ├── inventory/                  Inventario
+│   │   ├── products/                   Productos
+│   │   └── reports/                    Reportes
 │   └── public_html/res/modules/pharmacy/
 │       ├── uiadmin/
 │       ├── orders/
@@ -61,28 +63,16 @@ Botica-LyP/
 │       ├── inventory/
 │       ├── products/
 │       └── reports/
-├── .gitignore
-├── .gitmodules
-├── README.md
-└── SECURITY.md
+└── README.md
 ```
 
-## Rutas administrativas
+## Regla de separación
 
-| Pantalla | Código interno | Ruta |
-|---|---|---|
-| Inicio | `welcome` | `/admin/` |
-| Pedidos | `orders` | `/admin/?ui=pharmacy&sui=orders` |
-| Cobranza | `payments` | `/admin/?ui=pharmacy&sui=payments` |
-| Inventario | `inventory` | `/admin/?ui=pharmacy&sui=inventory` |
-| Agregar producto | `addproduct` | `/admin/?ui=pharmacy&sui=addproduct` |
-| Reportes | `reports` | `/admin/?ui=pharmacy&sui=reports` |
+```text
+man.php           lógica, validaciones, SQL y transacciones
+uiadmin/*.php     preparación de datos y HTML dinámico
+ui.css            presentación visual
+ui.js             comportamiento del navegador
+```
 
-## Regla principal de organización
-
-- Arranque y configuración: `src/app/`.
-- PHP propio: `src/mwap/modules/pharmacy/`.
-- Consultas y reglas de negocio: archivos `man.php`.
-- Pantallas: archivos `uiadmin/*.php`.
-- CSS y JavaScript: `src/public_html/res/modules/pharmacy/`.
-- Núcleo de Meralda: submódulos oficiales; no se modifica para agregar funciones de Botica.
+El HTML no se guarda como una página `.html` independiente por cada módulo. Se genera desde las clases PHP de interfaz, igual que en el patrón administrativo de Meralda.

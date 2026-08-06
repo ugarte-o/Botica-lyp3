@@ -1,20 +1,30 @@
 # Documentación de Botica LyP
 
-Esta carpeta contiene la documentación propia de **Botica LyP**. Se mantiene separada de `docs/`, porque `docs/` pertenece a la documentación oficial del framework Meralda y se administra como submódulo.
+Esta carpeta contiene la documentación específica de **Botica LyP**. No es un documento Word: son archivos Markdown que forman parte del proyecto y pueden leerse directamente en GitHub.
 
-## Documentación principal
-
-La guía actual de la aplicación está en:
+## Guía principal
 
 - [`lng/es/botica/README.md`](lng/es/botica/README.md)
 
-Incluye arquitectura, instalación, módulos, base de datos, frontend, seguridad, mantenimiento y publicación en GitHub.
+La guía describe el estado actual del módulo técnico `pharmacy`, su arquitectura, arranque, managers, interfaces, recursos, base de datos, seguridad, mantenimiento y relación con Meralda.
 
-## Diferencia entre las carpetas
+## Separación de documentación
 
 ```text
-docs/          Documentación oficial de Meralda; no modificar para documentar Botica.
-docs-botica/   Documentación específica de la aplicación Botica LyP.
+docs/          Documentación oficial de Meralda, declarada como submódulo.
+docs-botica/   Documentación propia de Botica LyP.
 ```
 
-La aplicación actual usa el prefijo y la carpeta `pharmacy`. Los nombres técnicos están en inglés, mientras que los títulos visibles para el usuario permanecen en español.
+No se debe modificar `docs/` para explicar funciones exclusivas de Botica. Las actualizaciones del proyecto se documentan aquí.
+
+## Configuración local
+
+La documentación ya no supone la existencia de archivos `*.example.php`. La instalación utiliza los archivos reales de configuración local:
+
+```text
+src/app/cfg/db.php
+src/app/cfg/install.php
+src/app/cfg/sysmail.php
+```
+
+Antes de publicar, deben permanecer fuera del seguimiento de Git o contener únicamente valores seguros.

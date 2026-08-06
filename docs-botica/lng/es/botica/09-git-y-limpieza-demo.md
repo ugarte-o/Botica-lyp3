@@ -1,55 +1,76 @@
-# 9. Git, submódulos y eliminación de Demo
+# 9. Git, submódulos y Demo
 
-## Repositorio público limpio
+## `.gitmodules`
 
-La versión preparada para GitHub usa un historial Git nuevo. No conserva el remoto ni el historial del ZIP original, evitando publicar configuraciones antiguas que pudieron existir en commits anteriores.
+El proyecto incluye las URL originales de Meralda para:
 
-## Submódulos de Meralda
+```text
+src/mwap/modules/mw
+src/public_html/res/js
+src/public_html/res/css
+src/public_html/res/thirdparty
+docs
+src/mwap/modulesext
+src/public_html/res/meralda
+src/mwap/modules/themes/default
+src/public_html/res/themes/default
+```
 
-`.gitmodules` conserva las dependencias oficiales:
+## Importante: archivo y gitlinks
 
-- `docs`
-- `src/mwap/modules/mw`
-- `src/mwap/modules/themes/default`
-- `src/mwap/modulesext`
-- `src/public_html/res/css`
-- `src/public_html/res/js`
-- `src/public_html/res/meralda`
-- `src/public_html/res/themes/default`
-- `src/public_html/res/thirdparty`
+`.gitmodules` guarda el nombre, la ruta y la URL de cada dependencia. Para que una ruta sea un submódulo real, el repositorio principal también debe registrarla como un gitlink y guardar el commit concreto de la dependencia.
 
-Al clonar:
+Por eso, después de preparar los submódulos en el repositorio local, se debe confirmar:
+
+```powershell
+git submodule status --recursive
+git status --short
+git add .gitmodules
+git add src/mwap/modules/mw
+git add src/public_html/res/js
+git add src/public_html/res/css
+git add src/public_html/res/thirdparty
+git add docs
+git add src/mwap/modulesext
+git add src/public_html/res/meralda
+git add src/mwap/modules/themes/default
+git add src/public_html/res/themes/default
+git commit -m "Configurar submódulos oficiales de Meralda"
+```
+
+No ejecutes una conversión destructiva sin una copia de seguridad y un commit previo del módulo `pharmacy`.
+
+## Clonar
 
 ```bash
 git clone --recurse-submodules URL_DEL_REPOSITORIO
 ```
 
-O después:
+O inicializar después:
 
 ```bash
+git submodule sync --recursive
 git submodule update --init --recursive
 ```
 
-## Independencia de Demo
+## Demo
 
-La aplicación activa declara:
+La aplicación activa es:
 
 ```php
 class mw_app extends mwap_pharmacy_ap
 ```
 
-El autoloader registra `pharmacy`, la interfaz principal crea `pharmacy` y las rutas públicas usan `/res/modules/pharmacy/`. Por ello, Botica no depende del antiguo módulo de aplicación Demo.
+El módulo propio y sus recursos usan `pharmacy`. El antiguo Demo de aplicación no es necesario.
 
-La plantilla `example/demo` fue retirada de la versión pública para evitar confusión. El directorio `src/mwap/modules/mw/demo`, cuando aparece dentro del submódulo del núcleo, pertenece a Meralda y no representa una dependencia de la aplicación Botica.
+El directorio:
 
-## Publicar
-
-Crea un repositorio vacío en GitHub y ejecuta:
-
-```powershell
-git remote add origin https://github.com/TU_USUARIO/botica-lyp.git
-git branch -M main
-git push -u origin main
+```text
+src/mwap/modules/mw/demo
 ```
 
-No uses el remoto de Meralda como destino de tus cambios. Meralda permanece únicamente como framework y como origen de los submódulos oficiales.
+pertenece al submódulo del núcleo Meralda. No debe eliminarse como si fuera el antiguo módulo de aplicación.
+
+## Remotos
+
+El remoto `origin` debe apuntar al repositorio de Botica. Los repositorios de Meralda permanecen en `.gitmodules` como dependencias y no deben reemplazar `origin`.

@@ -1,14 +1,14 @@
 # 8. Mantenimiento y pruebas
 
-## Antes de modificar
+## Antes de cambiar código
 
-1. Crea una copia ZIP.
+1. Crea una copia del proyecto.
 2. Exporta la base de datos.
-3. Cambia un módulo a la vez.
+3. Modifica un módulo a la vez.
 4. Valida sintaxis.
 5. Prueba el flujo completo.
 
-## Validar PHP
+## PHP
 
 ```powershell
 Get-ChildItem .\src\mwap\modules\pharmacy -Recurse -Filter *.php |
@@ -17,10 +17,10 @@ ForEach-Object { php -l $_.FullName }
 php -l .\src\app\init.php
 ```
 
-## Validar JavaScript
+## JavaScript
 
 ```powershell
-Get-ChildItem .\src\public_html\res\modules\pharmacy -Recurse -Filter *.js |
+Get-ChildItem .\src\public_htmles\modules\pharmacy -Recurse -Filter *.js |
 ForEach-Object { node --check $_.FullName }
 ```
 
@@ -28,43 +28,51 @@ ForEach-Object { node --check $_.FullName }
 
 ### Productos e inventario
 
-- Registrar un producto válido.
+- Registrar producto.
 - Rechazar código duplicado.
 - Aumentar stock.
 - Eliminar lógicamente.
-- Mostrar stock bajo.
-- Mostrar vencimientos.
+- Verificar alertas y vencimientos.
 
 ### Pedidos
 
-- Validar DNI de 8 dígitos.
-- Validar teléfono peruano de 9 dígitos que inicia en 9.
+- Validar cliente.
 - Agregar, aumentar, reducir y retirar productos.
 - Impedir cantidades superiores al stock.
-- Confirmar descuento de stock al guardar.
+- Guardar el pedido.
+- Confirmar descuento de stock.
 - Confirmar subtotal, IGV y total.
 
 ### Cobranza
 
-- Mostrar pedidos pendientes.
-- Impedir un monto menor al total.
-- Registrar cada método permitido.
+- Listar pendientes.
+- Seleccionar pedido.
+- Validar monto.
+- Registrar método.
 - Calcular vuelto.
-- Cambiar el pedido a Pagado.
-- Imprimir el ticket.
+- Cambiar a Pagado.
+- Imprimir ticket.
 
 ### Reportes
 
-- Probar hoy, semana, mes y rango personalizado.
+- Probar periodos y rango.
 - Filtrar por método.
-- Buscar por pedido, cliente y documento.
-- Comparar los totales con la tabla `pagos`.
+- Buscar pedido o cliente.
+- Comparar totales con `pagos`.
 
-## Revisión antes de publicar
+## Submódulos
 
 ```powershell
-git status
+git submodule status --recursive
+git submodule sync --recursive
+git submodule update --init --recursive
+```
+
+## Antes de publicar
+
+```powershell
+git status --short
 git diff --cached
 ```
 
-Comprueba especialmente que no aparezcan archivos privados de `src/app/cfg/`.
+La prueba desde una instalación limpia queda como validación final del propietario del proyecto.
