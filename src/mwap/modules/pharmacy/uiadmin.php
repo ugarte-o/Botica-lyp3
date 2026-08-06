@@ -86,16 +86,16 @@ class mwap_pharmacy_uiadmin
 
         $icons = [
             "orders" =>
-                "meralda-icon-color meralda-icon-pedidos",
+                "fas fa-shopping-cart mnuicon",
 
             "payments" =>
-                "meralda-icon-color meralda-icon-cobranza",
+                "fas fa-credit-card mnuicon",
 
             "inventory" =>
-                "meralda-icon-color meralda-icon-inventario",
+                "fas fa-cube mnuicon",
 
             "addproduct" =>
-                "meralda-icon-color meralda-icon-agregarproducto",
+                "fas fa-plus-square mnuicon",
 
             "reports" =>
                 "fas fa-chart-line mnuicon"
