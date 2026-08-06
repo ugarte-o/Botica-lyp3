@@ -1,2 +1,0 @@
-Official source: https://connect.facebook.net/en_US/sdk.js
-Downloaded at: 2026-04-20 02:15:27
